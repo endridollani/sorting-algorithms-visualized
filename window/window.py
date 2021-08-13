@@ -1,19 +1,17 @@
 import pygame
 
 class Window:
+   
+    def __init__(self):
+        self.window = pygame.display.set_mode((1300, 700), pygame.SCALED)
+        self.caption = pygame.display.set_caption("Visualized Sorting")  
 
-    def __init__(self, dimensions, caption):
-        self.window = self.set_display_mode(dimensions)
-        self.caption = self.set_caption(caption)
+    def display_set_dimensions(self,dimensions): self.window = self.display_set_mode(dimensions=dimensions)
 
-    def set_caption(self, caption):
-        return pygame.display.set_caption(caption)
+    def display_set_mode(self, dimensions): return pygame.display.set_mode(dimensions, pygame.SCALED)
 
-    def set_display_mode(self,dimensions):
-        return pygame.display.set_mode(dimensions, pygame.SCALED)
+    def get_win(self): return self.window
 
-    def get_display_mode(self):
-        return self.window
-    
     def redraw(self, gui):
-        pass
+        gui.display(self.window)
+        pygame.display.update()

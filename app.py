@@ -5,14 +5,13 @@ from gui import gui
 from events import handler
 pygame.init()
 
-window = window.Window((1360, 700), "Sorting Visualized")
-gui, handler = gui.Gui(window.get_display_mode()), handler.EventHandler(window.get_display_mode())
+window = window.Window()
+gui, handler = gui.Gui(), handler.EventHandler()
 
 if __name__ ==  "__main__":
     running = True
     clock = pygame.time.Clock()
     FPS = 60
-
 
     while(running):
         clock.tick(FPS)
