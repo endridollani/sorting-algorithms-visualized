@@ -1,21 +1,25 @@
 import pygame
 import time
-from window import window
-from gui import gui
-from events import handler
+import window
+import gui
+import handler
 pygame.init()
 
-window = window.Window()
-gui, handler = gui.Gui(), handler.EventHandler()
-
 if __name__ ==  "__main__":
+    window = window.Window()
+    gui = gui.Gui()
+    handler = handler.EventHandler()
+
     running = True
     clock = pygame.time.Clock()
     FPS = 60
 
     while(running):
-        clock.tick(FPS)
-        window.redraw(gui)
+        time_delta = clock.tick(FPS) / 1000.0
 
         for event in pygame.event.get():
-            handler.handle_event(event.type)        
+            handler.handle_event(event)
+
+        gui.update_delta_time(time_delta)
+
+        window.redraw(gui)
