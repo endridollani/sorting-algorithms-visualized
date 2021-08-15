@@ -7,24 +7,34 @@ class EventHandler(Gui):
         super().__init__()
         self.manager = super().get_manager()
         self.shuffle_btn = super().get_shuffle_btn()
-        self.array_size_btn = super().get_array_size_btn()
-        self.algorithm_picker_btn = super().get_algorithm_picker_btn()
+        self.merge_sort_btn = super().get_merge_sort_btn()
+        self.quick_sort_btn = super().get_quick_sort_btn()
+        self.heap_sort_btn = super().get_heap_sort_btn()
+        self.bubble_sort_btn = super().get_bubble_sort_btn()
+        
         self.sort_btn = super().get_sort_btn()
     
     def handle_event(self, event):
         if event.type == pygame.QUIT:
             quit()
-        
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                quit()
+    
         elif event.type == pygame.USEREVENT:
             if event.user_type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == self.shuffle_btn:
                     print('Shuffle')
-                if event.ui_element == self.array_size_btn:
-                    print('Pick Array Size')
-                if event.ui_element == self.algorithm_picker_btn:
-                    print('Pick Sortin Algorithm')
+                if event.ui_element == self.merge_sort_btn:
+                    print('merge_sort')
+                if event.ui_element == self.quick_sort_btn:
+                    print('quick_sort')
+                if event.ui_element == self.heap_sort_btn:
+                    print('heap_sort')
+                if event.ui_element == self.bubble_sort_btn:
+                    print('bubble_sort')
                 if event.ui_element == self.sort_btn:
                     print('Sort')
-        
+
         self.manager.process_events(event)
         
