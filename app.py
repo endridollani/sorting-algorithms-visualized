@@ -3,12 +3,14 @@ import time
 import window
 import gui
 import handler
+import algorithms
 pygame.init()
 
 if __name__ ==  "__main__":
     window = window.Window()
     gui = gui.Gui()
-    handler = handler.EventHandler()
+    algorithm = algorithms.SortingAlgorithms(100)
+    handler = handler.EventHandler(algorithm)
 
     running = True
     clock = pygame.time.Clock()
@@ -22,4 +24,4 @@ if __name__ ==  "__main__":
 
         gui.update_delta_time(time_delta)
 
-        window.redraw(gui)
+        window.redraw(gui,algorithm)
