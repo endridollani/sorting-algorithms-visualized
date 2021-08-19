@@ -10,8 +10,6 @@ class Window:
 
     def get_window_dimensions(self): return (pygame.display.Info().current_w, pygame.display.Info().current_h)
     def get_win(self): return self.window
-    def redraw(self, gui, algorithm):
+    def set_bg(self):
         self.window.blit(self.background, (0, 0))
-        gui.display(self.window)
-        algorithm.display(self.window)
-        pygame.display.flip()
+        

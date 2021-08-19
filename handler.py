@@ -33,8 +33,8 @@ class EventHandler(Gui):
                 if event.ui_element == self.heap_sort_btn:
                     print('heap_sort')
                 if event.ui_element == self.bubble_sort_btn:
-                    self.algorithm.bubble_sort()
-                    print('bubble_sort')
+                    self.algorithm.set_sort_state(True,"bubble_sort")
+                    print('bubble_sort state initiated')
                 # if event.ui_element == self.sort_btn:
                 #     print('Sort')
 
