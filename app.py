@@ -9,12 +9,12 @@ pygame.init()
 if __name__ ==  "__main__":
     window = window.Window()
     gui = gui.Gui()
-    algorithm = algorithms.SortingAlgorithms(30)
+    algorithm = algorithms.SortingAlgorithms(50)
     handler = handler.EventHandler(algorithm)
 
     running = True
     clock = pygame.time.Clock()
-    FPS = 60
+    FPS = 100
 
     while(running):
         time_delta = clock.tick(FPS) / 1000.0
