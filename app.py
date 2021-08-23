@@ -14,7 +14,7 @@ if __name__ ==  "__main__":
 
     running = True
     clock = pygame.time.Clock()
-    FPS = 100
+    FPS = 120
 
     while(running):
         time_delta = clock.tick(FPS) / 1000.0
