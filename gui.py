@@ -12,27 +12,27 @@ class Gui(Window):
         self.side_space = round((self.win_dim[0] - 830)/2)
 
         self.shuffle_btn = pygame_gui.elements.UIButton(
-            relative_rect=pygame.Rect((self.side_space, 25), (150, 50)),
+            relative_rect=pygame.Rect((775, 5), (100, 30)),
             text='Shuffle',
             manager=self.manager)
         
         self.merge_sort_btn = pygame_gui.elements.UIButton(
-            relative_rect=pygame.Rect((self.side_space+170, 25), (150, 50)),
+            relative_rect=pygame.Rect((880, 5), (100, 30)),
             text='Merge Sort',manager=self.manager)
 
       
         self.quick_sort_btn = pygame_gui.elements.UIButton(
-            relative_rect=pygame.Rect((self.side_space+340, 25), (150, 50)),
+            relative_rect=pygame.Rect((985, 5), (100, 30)),
             text='Quick Sort',
             manager=self.manager)
         
         self.heap_sort_btn = pygame_gui.elements.UIButton(
-            relative_rect=pygame.Rect((self.side_space+510, 25), (150, 50)),
+            relative_rect=pygame.Rect((1090, 5), (100, 30)),
             text='Heap Sort',manager=self.manager)
 
       
         self.bubble_sort_btn = pygame_gui.elements.UIButton(
-            relative_rect=pygame.Rect((self.side_space+680, 25), (150, 50)),
+            relative_rect=pygame.Rect((1195, 5), (100, 30)),
             text='Bubble Sort',
             manager=self.manager)
         
