@@ -63,7 +63,8 @@ class SortingAlgorithms:
             self.draw_text(window)
             self.rect.draw_rects(window,sw1 = self.sw1,sw2=self.sw2)
 
-
+    def quick_sort(self):
+        pass
     def render_text(self,algorithm_selected = None,swaps = None, array_writes = None):
         if algorithm_selected != None:
             self.algorithm_selected = self.font.render(f'Algorithm Selected: {algorithm_selected}', True, (255, 255, 255), (0, 0, 0))
@@ -78,10 +79,10 @@ class SortingAlgorithms:
         self.algorithm_writes = self.font.render(f'Array Writes: None', True, (255, 255, 255), (0, 0, 0))
 
     def swap(self,i):
-        self.sw1,self.sw2 = i,i+1
+        # self.sw1,self.sw2 = i,i+1
         self.numbers_arr[i],self.numbers_arr[i+1] = self.numbers_arr[i+1],self.numbers_arr[i]
-        self.swaps+=1
-        self.render_text(array_writes=self.swaps * 2)
+        # self.swaps+=1
+        # self.render_text(array_writes=self.swaps * 2)
 
     def shuffle_array(self):
         self.sorting_state = [False,""]
@@ -121,7 +122,9 @@ class Rectangles():
                 pygame.draw.rect(window,swaped_colour, rectangle)
                 sw2 = None
             elif finished != None:
+                time.wait(50)
                 pygame.draw.rect(window,finished, rectangle)
+                pygame.display.flip()
                 self.default_color = finished
             else:
                 pygame.draw.rect(window,self.default_color, rectangle)
