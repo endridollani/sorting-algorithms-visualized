@@ -7,22 +7,27 @@ pygame.init()
 
 while True:
     try:
-        number_of_rectangles = (int)(input("Enter number of rectangles: "))
-        break
+        array_size = (int)(input("Enter array size: "))
+        if (array_size <= 0):
+            print("Enter a positive number > 0")
+        else:
+            break
     except ValueError:
-        print("Enter an integer:")
+        print("Value Error! Enter an number:")
 
-print("Enter the delay of the algorithm in ms (1ms = 0.001s):")
 while True:
     try:
-        delay_in_secondes = (float)(input("Enter delay: "))
-        break
+        delay_in_millisecondes = (float)(input("Enter delay in milliseconds: "))
+        if (delay_in_millisecondes <= -1):
+            print("Delay can't be a negative value")
+        else:
+            break
     except ValueError:
-        print("Enter a integer:")
+        print("Value Error! Enter an number:")
         
 window = Window()
 handler = EventHandler()
-algorithm = Algorithm(number_of_rectangles)
+algorithm = Algorithm(array_size)
 handler.set_algorithm_to_check(algorithm)
 
 if __name__ ==  "__main__":
@@ -38,7 +43,7 @@ if __name__ ==  "__main__":
         window.display_buttons()
 
         if algorithm.is_choosen():
-            algorithm.visualize(window,delay_in_secondes/1000)
+            algorithm.visualize(window,delay_in_millisecondes/1000)
         else:
             algorithm.display_shuffled_array()
 
