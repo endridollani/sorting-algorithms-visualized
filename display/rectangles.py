@@ -43,7 +43,7 @@ class Rectangles():
             rectangle = self.get_rectangle_at(pos,val)
 
             time.sleep(0.02)
-            pygame.draw.rect(window,(0, 176, 255), rectangle)
+            pygame.draw.rect(window,(46, 209, 54), rectangle)
             pygame.display.flip()
     
     def initialize_new_array_of_numbers(self):

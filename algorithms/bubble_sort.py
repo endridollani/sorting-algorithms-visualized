@@ -14,7 +14,7 @@ class BubbleSort:
 		for i in range(array_size):
 			for j in range(iterations):
 				if self.array_of_numbers[j] > self.array_of_numbers[j+1]:
-					time.sleep(0.0005)
+					time.sleep(0.05)
 					self.swap(j,window)
 				
 				if not self.swaped:
