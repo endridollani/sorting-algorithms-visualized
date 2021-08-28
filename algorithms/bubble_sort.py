@@ -24,7 +24,7 @@ class BubbleSort:
 				self.swaped = False
 			array_size -=1
 			iterations -=1
-		self.rectangles.sort_finished(window.get_window(),delay-0.005)
+		self.rectangles.sort_finished(window.get_window(),delay/2)
 
 
 	def swap(self, index,window):

@@ -12,13 +12,13 @@ while True:
     except ValueError:
         print("Enter an integer:")
 
-print("Enter the delay of the algorithm in secondes (for example 0.001s = 1ms):")
+print("Enter the delay of the algorithm in ms (1ms = 0.001s):")
 while True:
     try:
         delay_in_secondes = (float)(input("Enter delay: "))
         break
     except ValueError:
-        print("Enter a float:")
+        print("Enter a integer:")
         
 window = Window()
 handler = EventHandler()
@@ -38,7 +38,7 @@ if __name__ ==  "__main__":
         window.display_buttons()
 
         if algorithm.is_choosen():
-            algorithm.visualize(window,delay_in_secondes)
+            algorithm.visualize(window,delay_in_secondes/1000)
         else:
             algorithm.display_shuffled_array()
 
