@@ -51,11 +51,11 @@ class Algorithm(Window):
         self.shuffled = True
 
     
-    def visualize(self,window):
+    def visualize(self,window,delay):
         if self.index_of_algorithm_chosen == 0: self.set_sort_state_to(False)
         elif self.index_of_algorithm_chosen == 1: self.set_sort_state_to(False) 
         elif self.index_of_algorithm_chosen == 2: self.set_sort_state_to(False) 
         elif self.index_of_algorithm_chosen == 3: 
             self.bubble_sort = bs.BubbleSort(window, self.rectangles)
-            self.bubble_sort.display(window)
+            self.bubble_sort.display(window,delay)
             self.set_sort_state_to(False)            

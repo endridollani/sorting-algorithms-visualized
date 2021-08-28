@@ -36,13 +36,13 @@ class Rectangles():
             else:
                 pygame.draw.rect(window,self.default_color, rectangle)
             
-    def sort_finished(self,window):
+    def sort_finished(self,window,delay):
         for i in self.array_of_numbers:
             val = i
             pos = self.array_of_numbers.index(val)
             rectangle = self.get_rectangle_at(pos,val)
 
-            time.sleep(0.02)
+            time.sleep(delay)
             pygame.draw.rect(window,(46, 209, 54), rectangle)
             pygame.display.flip()
     
