@@ -1,42 +1,47 @@
 import pygame
 import pygame_gui
-from gui import Gui
+from window import Window
 
-class EventHandler(Gui):
-    def __init__(self,algorithm):
+class EventHandler(Window):
+    def __init__(self):
         super().__init__()
-        self.manager = super().get_manager()
-        self.shuffle_btn = super().get_shuffle_btn()
-        self.merge_sort_btn = super().get_merge_sort_btn()
-        self.quick_sort_btn = super().get_quick_sort_btn()
-        self.heap_sort_btn = super().get_heap_sort_btn()
-        self.bubble_sort_btn = super().get_bubble_sort_btn()
-        # self.sort_btn = super().get_sort_btn()
-        self.algorithm = algorithm
+        self.button = super().get_button()
+        self.manager = self.button.get_manager()
+        self.shuffle_btn = self.button.get_shuffle_button()
+        self.merge_sort_btn = self.button.get_merge_sort_button()
+        self.quick_sort_btn = self.button.get_quick_sort_button()
+        self.heap_sort_btn = self.button.get_heap_sort_button()
+        self.bubble_sort_btn = self.button.get_bubble_sort_button()
 
-    def handle_event(self, event):
-        if event.type == pygame.QUIT:
-            quit()
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
+        self.algorithm = None
+
+    def set_algorithm_to_check(self,algorithm): self.algorithm = algorithm
+
+    def check_for_events(self, events):
+        for event in events:
+            if event.type == pygame.QUIT:
                 quit()
-    
-        elif event.type == pygame.USEREVENT:
-            if event.user_type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == self.shuffle_btn:
-                    self.algorithm.shuffle_array(),
-                    print('Shuffled')
-                if event.ui_element == self.merge_sort_btn:
-                    print('merge_sort')
-                if event.ui_element == self.quick_sort_btn:
-                    print('quick_sort')
-                if event.ui_element == self.heap_sort_btn:
-                    print('heap_sort')
-                if event.ui_element == self.bubble_sort_btn:
-                    self.algorithm.set_sort_state(True,"bubble_sort")
-                    print('bubble_sort state initiated')
-                # if event.ui_element == self.sort_btn:
-                #     print('Sort')
-
-        self.manager.process_events(event)
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    quit()
         
+            elif event.type == pygame.USEREVENT:
+                if event.user_type == pygame_gui.UI_BUTTON_PRESSED:
+                    if event.ui_element == self.shuffle_btn:
+                        self.algorithm.shuffle_array()
+                        print('Array got Shuffled')
+                    if event.ui_element == self.merge_sort_btn:
+                        self.algorithm.set_index_of_algorithm_chosen(index=0)
+                        print('merge_sort initiated')
+                    if event.ui_element == self.quick_sort_btn:
+                        self.algorithm.set_index_of_algorithm_chosen(index=1)
+                        print('quick_sort initiated')
+                    if event.ui_element == self.heap_sort_btn:
+                        self.algorithm.set_index_of_algorithm_chosen(index=2)
+                        print('heap_sort initiated')
+                    if event.ui_element == self.bubble_sort_btn:
+                        self.algorithm.set_index_of_algorithm_chosen(index=3)
+                        print('bubble_sort initiated')
+
+            self.manager.process_events(event)
+            
