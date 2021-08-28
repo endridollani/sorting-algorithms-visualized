@@ -27,7 +27,7 @@ while True:
         
 window = Window()
 handler = EventHandler()
-algorithm = Algorithm(array_size)
+algorithm = Algorithm(array_size,delay_in_millisecondes)
 handler.set_algorithm_to_check(algorithm)
 
 if __name__ ==  "__main__":
@@ -43,7 +43,7 @@ if __name__ ==  "__main__":
         window.display_buttons()
 
         if algorithm.is_choosen():
-            algorithm.visualize(window,delay_in_millisecondes/1000)
+            algorithm.visualize(window)
         else:
             algorithm.display_shuffled_array()
 
