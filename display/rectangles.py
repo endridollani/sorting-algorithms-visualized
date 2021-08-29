@@ -9,7 +9,6 @@ class Rectangles():
         self.number_of_rectangles = number_of_rectangles
         self.array_of_numbers = self.initialize_new_array_of_numbers()
         self.default_color = (255,255,255)
-
     def set_color_to_default_value(self): self.default_color = (255,255,255) 
 
     def get_array_of_numbers(self): return self.array_of_numbers
@@ -28,13 +27,15 @@ class Rectangles():
             pos = self.array_of_numbers.index(val)
             rectangle = self.get_rectangle_at(pos,val)
             if pos == l or pos == r:
-                pygame.draw.rect(window,(46, 209, 54), rectangle)
+                pygame.draw.rect(window.get_window(),(46, 209, 54), rectangle)
             elif pos > l and pos < r:
-                pygame.draw.rect(window,(255, 0, 0), rectangle)
-            # elif pos < l or (pos > l and pos < r):
-            #     pygame.draw.rect(window,(255, 44, 22), rectangle)
+                pygame.draw.rect(window.get_window(),(255, 0, 0), rectangle)
             else:
-                pygame.draw.rect(window,(255, 255, 255), rectangle)
+                pygame.draw.rect(window.get_window(),(255, 255, 255), rectangle)
+
+
+            
+
 
         
 

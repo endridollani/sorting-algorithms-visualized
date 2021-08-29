@@ -44,7 +44,7 @@ class MergeSort:
 
     def draw_rectangles(self,l,r):
         self.window.set_bg()
-        self.rectangles.draw_merge_sort(self.window.get_window(),l,r)
+        self.rectangles.draw_merge_sort(self.window,l,r)
         pygame.display.flip()
 
     def display(self, window, delay):
