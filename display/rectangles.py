@@ -20,6 +20,24 @@ class Rectangles():
             left_p = round(1300 / self.number_of_rectangles) * pos
         return pygame.Rect(left_p,700 - round(650 * (val + 1) / (self.number_of_rectangles + 5)), round(1300 / self.number_of_rectangles),round(650 * (val + 1) / self.number_of_rectangles))
 
+    def draw_merge_sort(self,window,l,r,k):
+        for i in self.array_of_numbers:
+            val = i
+            pos = self.array_of_numbers.index(val)
+            rectangle = self.get_rectangle_at(pos,val)
+            if pos == l or pos == r:
+                pygame.draw.rect(window,(46, 209, 54), rectangle)
+            elif pos > l and pos < r:
+                pygame.draw.rect(window,(255, 255, 0), rectangle)
+            elif pos == k:
+                pygame.draw.rect(window,(255, 0, 0), rectangle)
+            # elif pos < l or (pos > l and pos < r):
+            #     pygame.draw.rect(window,(255, 44, 22), rectangle)
+            else:
+                pygame.draw.rect(window,(255, 255, 255), rectangle)
+
+        
+
     def draw_rectangles(self,window,swaped_colour = (255,0,0),swap1 = None,swap2 = None):
 
         for i in self.array_of_numbers:

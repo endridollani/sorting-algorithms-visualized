@@ -32,13 +32,23 @@ class MergeSort:
         # self.swaped = False
         # self.number_of_swaps = 0
         self.array_of_numbers = self.rectangles.get_array_of_numbers()
-
+        self.window = None
+        self.delay = None
     # def get_swaps_number(self): return self.number_of_swaps
     # def set_swaps_number_to_zero(self): self.number_of_swaps = 0
 
     # def get_array_writes(self): return self.number_of_swaps * 2
+    def set_window_and_delay(self,window,delay): 
+        self.window = window
+        self.delay = delay 
+
+    def draw_rectangles(self,l,r,k):
+        self.window.set_bg()
+        self.rectangles.draw_merge_sort(self.window.get_window(),l,r,k)
+        pygame.display.flip()
 
     def display(self, window, delay):
+        self.set_window_and_delay(window,delay)
         self.merge_sort(self.array_of_numbers, 0,
                         len(self.array_of_numbers) - 1)
 
@@ -65,9 +75,14 @@ class MergeSort:
         while i < n1 and j < n2:
             if L[i] <= R[j]:
                 arr[k] = L[i]
+                time.sleep(self.delay)
+                self.draw_rectangles(l,r,k)
                 i += 1
+                
             else:
                 arr[k] = R[j]
+                time.sleep(self.delay)
+                self.draw_rectangles(l,r,k)
                 j += 1
             k += 1
 
@@ -75,6 +90,8 @@ class MergeSort:
         # are any
         while i < n1:
             arr[k] = L[i]
+            time.sleep(self.delay)
+            self.draw_rectangles(l,r,k)
             i += 1
             k += 1
 
@@ -82,6 +99,8 @@ class MergeSort:
         # are any
         while j < n2:
             arr[k] = R[j]
+            time.sleep(self.delay)
+            self.draw_rectangles(l,r,k)
             j += 1
             k += 1
 
