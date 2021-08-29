@@ -8,8 +8,10 @@ pygame.init()
 while True:
     try:
         array_size = (int)(input("Enter array size: "))
-        if (array_size <= 0):
-            print("Enter a positive number > 0")
+        if array_size < 3:
+            print("Please enter a positive number >= 3 for a better visualization")
+        elif array_size>1000:
+            print("Please enter a number <= 1000.")
         else:
             break
     except ValueError:

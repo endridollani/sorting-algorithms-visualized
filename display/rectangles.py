@@ -16,9 +16,11 @@ class Rectangles():
    
     def get_rectangle_at(self,pos,val):
         left_p = 0
+        # reminder = 0
         if pos != 0:
-            left_p = round(1300 / self.number_of_rectangles) * pos
-        return pygame.Rect(left_p,700 - round(650 * (val + 1) / (self.number_of_rectangles + 5)), round(1300 / self.number_of_rectangles),round(650 * (val + 1) / self.number_of_rectangles))
+            # reminder = 1300 % self.number_of_rectangles
+            left_p = (1300 / self.number_of_rectangles) * pos
+        return pygame.Rect(left_p,700 - (650 * (val + 1) / (self.number_of_rectangles + 5)), (1300 / self.number_of_rectangles),(650 * (val + 1) / self.number_of_rectangles))
 
     def draw_merge_sort(self,window,l,r,k):
         for i in self.array_of_numbers:
