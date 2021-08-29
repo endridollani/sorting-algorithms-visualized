@@ -2,7 +2,6 @@ import pygame
 from pygame import font
 import time
 
-from pygame.time import delay
 font.init()
 
 font = pygame.font.SysFont('arial', 15)

@@ -9,9 +9,6 @@ class Window:
         self.background = pygame.Surface((self.width,self.height))
         self.background.fill(pygame.Color('#000000'))
         self.button = button.Button(self.window,self.width,self.height) 
-    
-    def set_dimensions(self,width,height):
-        self.width,self.height = dimensions
 
     def set_bg(self):
         self.window.blit(self.background, (0, 0))

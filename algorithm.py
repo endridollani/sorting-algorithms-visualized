@@ -4,6 +4,7 @@ from display import rectangles as rects
 from window import Window
 from pygame import time
 from algorithms import bubble_sort as bs
+from algorithms import merge_sort as ms
 
 pygame.font.init()
 
@@ -18,23 +19,24 @@ class Algorithm(Window):
         self.sort_state  = False
         self.index_of_algorithm_chosen = None
         self.bubble_sort = bs.BubbleSort(self.rectangles)
+        self.merge_sort = ms.MergeSort(self.rectangles)
         self.shuffled = False
         # Font & Text
         self.font = pygame.font.SysFont('arial',15)
-        self.algorithm_finished = self.font.render('No algorithm Selected!', True, (255, 255, 255), (0, 0, 0))
+        self.algorithm_selected = self.font.render('No algorithm Selected!', True, (255, 255, 255), (0, 0, 0))
         self.algorithm_rect_number = self.font.render(f'Rectangles Drawn: {number_of_rectangles}', True, (255, 255, 255), (0, 0, 0))
         self.array_swaps = self.font.render(f'Swaps: None', True, (255, 255, 255), (0, 0, 0))
         self.writes = self.font.render(f'Array Writes: None', True, (255, 255, 255), (0, 0, 0))
         self.delay = self.font.render(f'Delay {self.delay_in_millisecondes} ms', True, (255, 255, 255), (0, 0, 0))
 
     def set_default_information(self):
-        self.algorithm_finished = self.font.render('No algorithm Selected!', True, (255, 255, 255), (0, 0, 0))
+        self.algorithm_selected = self.font.render('No algorithm Selected!', True, (255, 255, 255), (0, 0, 0))
         self.algorithm_rect_number = self.font.render(f'Rectangles Drawn: {self.number_of_rectangles}', True, (255, 255, 255), (0, 0, 0))
         self.array_swaps = self.font.render(f'Swaps: None', True, (255, 255, 255), (0, 0, 0))
         self.writes = self.font.render(f'Array Writes: None', True, (255, 255, 255), (0, 0, 0))
   
     def display_shuffled_array(self):
-        self.window.blit(self.algorithm_finished,(10,10))
+        self.window.blit(self.algorithm_selected,(10,10))
         self.window.blit(self.algorithm_rect_number,(10,30))
         self.window.blit(self.array_swaps,(10,50))
         self.window.blit(self.writes,(10,70))
@@ -43,7 +45,7 @@ class Algorithm(Window):
     
     # def is_shuffled(self): return self.shuffled 
     def set_sort_information(self,algorithm,swaps,array_writes):
-        self.algorithm_finished = self.font.render(f'{algorithm} finished!', True, (255, 255, 255), (0, 0, 0))
+        self.algorithm_selected = self.font.render(f'{algorithm} finished!', True, (255, 255, 255), (0, 0, 0))
         self.algorithm_rect_number = self.font.render(f'Rectangles Drawn: {self.number_of_rectangles}', True, (255, 255, 255), (0, 0, 0))
         self.array_swaps = self.font.render(f'Swaps: {swaps}', True, (255, 255, 255), (0, 0, 0))
         self.writes = self.font.render(f'Array Writes: {array_writes}', True, (255, 255, 255), (0, 0, 0))
@@ -67,7 +69,9 @@ class Algorithm(Window):
 
     
     def visualize(self,window):
-        if self.index_of_algorithm_chosen == 0: self.set_sort_state_to(False)
+        if self.index_of_algorithm_chosen == 0:
+            self.merge_sort.display(window,self.delay_in_millisecondes/1000) 
+            self.set_sort_state_to(False)
         elif self.index_of_algorithm_chosen == 1: self.set_sort_state_to(False) 
         elif self.index_of_algorithm_chosen == 2: self.set_sort_state_to(False) 
         elif self.index_of_algorithm_chosen == 3: 
