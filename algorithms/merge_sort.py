@@ -42,9 +42,9 @@ class MergeSort:
         self.window = window
         self.delay = delay 
 
-    def draw_rectangles(self,l,r):
+    def draw_rectangles(self,l,r,m,k):
         self.window.set_bg()
-        self.rectangles.draw_merge_sort(self.window,l,r)
+        self.rectangles.draw_merge_sort(self.window,l,r,m,k)
         pygame.display.flip()
 
     def display(self, window, delay):
@@ -76,13 +76,13 @@ class MergeSort:
             if L[i] <= R[j]:
                 arr[k] = L[i]
                 time.sleep(self.delay)
-                self.draw_rectangles(l,r)
+                self.draw_rectangles(l,r,m,k)
                 i += 1
                 
             else:
                 arr[k] = R[j]
                 time.sleep(self.delay)
-                self.draw_rectangles(l,r)
+                self.draw_rectangles(l,r,m,k)
                 j += 1
             k += 1
 
@@ -91,7 +91,7 @@ class MergeSort:
         while i < n1:
             arr[k] = L[i]
             time.sleep(self.delay)
-            self.draw_rectangles(l,r)
+            self.draw_rectangles(l,r,m,k)
             i += 1
             k += 1
 
@@ -100,7 +100,7 @@ class MergeSort:
         while j < n2:
             arr[k] = R[j]
             time.sleep(self.delay)
-            self.draw_rectangles(l,r)
+            self.draw_rectangles(l,r,m,k)
             j += 1
             k += 1
 
