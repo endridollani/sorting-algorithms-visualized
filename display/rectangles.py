@@ -23,7 +23,7 @@ class Rectangles():
             pos = self.array_of_numbers.index(val)
             rectangle = self.get_rectangle_at(pos,val)
             if pos == l or pos == r:
-                pygame.draw.rect(window.get_window(),(46, 209, 54), rectangle)
+                pygame.draw.rect(window.get_window(),(0, 255, 0), rectangle)
             elif pos == m:
                 pygame.draw.rect(window.get_window(),(0, 150, 255), rectangle)
             elif pos == li:
@@ -63,7 +63,7 @@ class Rectangles():
             rectangle = self.get_rectangle_at(pos,val)
 
             time.sleep(delay)
-            pygame.draw.rect(window,(46, 209, 54), rectangle)
+            pygame.draw.rect(window,(0, 255, 0), rectangle)
             pygame.display.flip()
     
     def initialize_new_array_of_numbers(self):
