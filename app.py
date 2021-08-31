@@ -47,7 +47,7 @@ if __name__ ==  "__main__":
         if algorithm.is_choosen():
             algorithm.visualize(window)
         else:
-            algorithm.display_shuffled_array()
+            algorithm.display_rectangles()
 
         pygame.display.flip()
 
