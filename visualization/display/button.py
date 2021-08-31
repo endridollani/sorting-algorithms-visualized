@@ -5,7 +5,7 @@ class Button:
 
     def __init__(self,window,width,height):
         self.window = window
-        self.manager = pygame_gui.UIManager((width,height), 'display/theme.json')
+        self.manager = pygame_gui.UIManager((width,height), 'visualization/display/theme.json')
 
         self.shuffle_button = self.set_button(relative_rect=pygame.Rect((775, 5), (100, 30)), text='Shuffle')
         
