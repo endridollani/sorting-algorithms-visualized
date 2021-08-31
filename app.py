@@ -45,7 +45,7 @@ if __name__ ==  "__main__":
         window.display_buttons()
 
         if algorithm.is_choosen():
-            algorithm.visualize(window)
+            algorithm.visualize()
         else:
             algorithm.display_rectangles()
 
