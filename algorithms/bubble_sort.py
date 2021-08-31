@@ -29,49 +29,43 @@ def display_sort_algorithm_information(window, algorithm, swap_number, array_wri
 class BubbleSort:
     def __init__(self, rectangles, delay_in_millisecondes):
         self.rectangles = rectangles
-        self.window = None
-        self.swaped = False
-        self.number_of_swaps = 0
         self.array_of_numbers = self.rectangles.get_array_of_numbers()
+        self.window = None
+        self.number_of_swaps = 0
         self.delay = delay_in_millisecondes / 1000
 
-    def get_swaps_number(self): return self.number_of_swaps
-    def set_swaps_number_to_zero(self): self.number_of_swaps = 0
-
-    def get_array_writes(self): return self.number_of_swaps * 2
+    def draw_rectangles(self):
+        self.window.set_bg()
+        self.display_information()
+        self.rectangles.draw_rectangles(self.window.get_window())
+        pygame.display.flip()
 
     def display_information(self):
-        pass
+        display_sort_algorithm_information(self.window.get_window(
+        ), "Bubble Sort", self.number_of_swaps, self.number_of_swaps * 2, len(self.array_of_numbers), self.delay)
 
-    def display(self, window):
-        self.window = window
+    def bubble_sort(self):
         array_size = len(self.array_of_numbers)
         iterations = len(self.array_of_numbers) - 1
+
         for i in range(array_size):
             for j in range(iterations):
                 if self.array_of_numbers[j] > self.array_of_numbers[j+1]:
-                    time.sleep(delay)
-                    self.swap(j, window, delay)
-
-                if not self.swaped:
-                    window.set_bg()
-                    self.rectangles.draw_rectangles(window.get_window())
-                    display_sort_algorithm_information(window.get_window(
-                    ), "Bubble Sort", self.number_of_swaps, self.number_of_swaps * 2, len(self.array_of_numbers), delay)
-                    pygame.display.flip()
-                self.swaped = False
+                    time.sleep(self.delay)
+                    self.swap(j)
+                    self.draw_rectangles()
+                
+                self.draw_rectangles()
             array_size -= 1
             iterations -= 1
-        self.rectangles.sort_finished(window.get_window(), delay*2)
+        
 
-    def swap(self, index, window, delay):
-        self.swaped = True
+    def display(self, window):
+        self.window = window
+        self.bubble_sort()
+        self.rectangles.sort_finished(self.window.get_window(), self.delay)
+
+    def swap(self, index):
         self.number_of_swaps += 1
         self.array_of_numbers[index], self.array_of_numbers[index +
                                                             1] = self.array_of_numbers[index+1], self.array_of_numbers[index]
-        window.set_bg()
-        self.rectangles.draw_rectangles(
-            window=window.get_window(), swap1=index, swap2=index+1)
-        display_sort_algorithm_information(window.get_window(
-        ), "Bubble Sort", self.number_of_swaps, self.number_of_swaps * 2, len(self.array_of_numbers), delay_in_millisecondes=delay)
-        pygame.display.flip()
