@@ -9,9 +9,9 @@ font = pygame.font.SysFont('arial', 15)
 
 def display_sort_algorithm_information(window, algorithm, comparisons, array_accesses, number_of_rectangles, delay_in_millisecondes):
     algorithm_selected = font.render(
-        f'Algorithm Selected: {algorithm}', True, (255, 255, 255), (0, 0, 0))
+        f'{algorithm}', True, (255, 255, 255), (0, 0, 0))
     algorithm_rect_number = font.render(
-        f'Rectangles Drawn: {number_of_rectangles}', True, (255, 255, 255), (0, 0, 0))
+        f'Rectangles: {number_of_rectangles}', True, (255, 255, 255), (0, 0, 0))
     algorithm_comparisons = font.render(
         f'Comparisons: {comparisons}', True, (255, 255, 255), (0, 0, 0))
     algorithm_accesses = font.render(
@@ -36,10 +36,7 @@ class MergeSort:
         self.delay = delay_in_millisecondes / 1000
         self.comparisons = 0
         self.array_accesses = 0
-    # def get_swaps_number(self): return self.number_of_swaps
-    # def set_swaps_number_to_zero(self): self.number_of_swaps = 0
 
-    # def get_array_writes(self): return self.number_of_swaps * 2
     def set_window_and_delay(self,window,delay): 
         self.window = window
         self.delay = delay 

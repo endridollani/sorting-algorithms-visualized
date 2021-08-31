@@ -24,13 +24,11 @@ class Algorithm(Window):
         self.shuffled = False
 
     def display_information(self):
-        algorithm_selected = font.render('No algorithm Selected!', True, (255, 255, 255), (0, 0, 0))
         number_of_rectangles_displayed = font.render(f'Rectangles Drawn: {self.number_of_rectangles}', True, (255, 255, 255), (0, 0, 0))
         delay = font.render(f'Delay {self.delay_in_millisecondes} ms', True, (255, 255, 255), (0, 0, 0))
         
-        self.window.blit(algorithm_selected,(10,10))
-        self.window.blit(number_of_rectangles_displayed,(10,30))
-        self.window.blit(delay,(10,50))
+        self.window.blit(number_of_rectangles_displayed,(10,10))
+        self.window.blit(delay,(10,30))
 
     def display_rectangles(self):
         if self.index_of_algorithm_chosen == 0 and not self.shuffled:
