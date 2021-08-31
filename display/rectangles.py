@@ -17,7 +17,7 @@ class Rectangles():
         left_p = (1300 / self.number_of_rectangles) * pos
         return pygame.Rect(left_p,700 - (650 * (val + 1) / (self.number_of_rectangles + 5)), (1300 / self.number_of_rectangles),(650 * (val + 1) / self.number_of_rectangles))
 
-    def draw_merge_sort(self,window,l,r,m,li):
+    def draw_merge_sort(self,window,l,r,m,li,ri):
         for i in self.array_of_numbers:
             val = i
             pos = self.array_of_numbers.index(val)
@@ -26,7 +26,7 @@ class Rectangles():
                 pygame.draw.rect(window.get_window(),(0, 255, 0), rectangle)
             elif pos == m:
                 pygame.draw.rect(window.get_window(),(0, 150, 255), rectangle)
-            elif pos == li:
+            elif pos == li or pos == ri:
                 pygame.draw.rect(window.get_window(),(255, 0, 0), rectangle)
            
             # elif pos > l and pos < r:
