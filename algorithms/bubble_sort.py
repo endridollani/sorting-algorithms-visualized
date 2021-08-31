@@ -27,11 +27,13 @@ def display_sort_algorithm_information(window, algorithm, swap_number, array_wri
 
 
 class BubbleSort:
-    def __init__(self, rectangles):
+    def __init__(self, rectangles, delay_in_millisecondes):
         self.rectangles = rectangles
+        self.window = None
         self.swaped = False
         self.number_of_swaps = 0
         self.array_of_numbers = self.rectangles.get_array_of_numbers()
+        self.delay = delay_in_millisecondes / 1000
 
     def get_swaps_number(self): return self.number_of_swaps
     def set_swaps_number_to_zero(self): self.number_of_swaps = 0
@@ -41,7 +43,8 @@ class BubbleSort:
     def display_information(self):
         pass
 
-    def display(self, window, delay):
+    def display(self, window):
+        self.window = window
         array_size = len(self.array_of_numbers)
         iterations = len(self.array_of_numbers) - 1
         for i in range(array_size):

@@ -53,8 +53,8 @@ class MergeSort:
         display_sort_algorithm_information(self.window.get_window(),"Merge Sort",self.comparisons,self.array_accesses,self.rectangles.number_of_rectangles,self.delay)
         pygame.display.flip()
 
-    def display(self, window, delay):
-        self.set_window_and_delay(window,delay)
+    def display(self, window):
+        self.window = window
         self.merge_sort(self.array_of_numbers, 0,
                         len(self.array_of_numbers) - 1)
 

@@ -18,7 +18,7 @@ class Algorithm(Window):
         self.delay_in_millisecondes = delay_in_millisecondes
         self.sort_state  = False
         self.index_of_algorithm_chosen = None
-        self.bubble_sort = bs.BubbleSort(self.rectangles)
+        self.bubble_sort = bs.BubbleSort(self.rectangles,delay_in_millisecondes)
         self.merge_sort = ms.MergeSort(self.rectangles,delay_in_millisecondes)
         self.shuffled = False
         # Font & Text
