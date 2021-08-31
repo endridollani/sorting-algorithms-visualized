@@ -22,6 +22,7 @@ class Algorithm(Window):
         self.bubble_sort = bs.BubbleSort(self.rectangles,delay_in_millisecondes)
         self.merge_sort = ms.MergeSort(self.rectangles,delay_in_millisecondes)
         self.shuffled = False
+        self.array_sorted = [False,]
 
     def display_information(self):
         number_of_rectangles_displayed = font.render(f'Rectangles Drawn: {self.number_of_rectangles}', True, (255, 255, 255), (0, 0, 0))
@@ -31,9 +32,9 @@ class Algorithm(Window):
         self.window.blit(delay,(10,30))
 
     def display_rectangles(self):
-        if self.index_of_algorithm_chosen == 0 and not self.shuffled:
+        if self.index_of_algorithm_chosen == 0 and not self.shuffled and self.array_sorted[1] == 0:
             self.merge_sort.display_information()
-        elif self.index_of_algorithm_chosen == 3 and not self.shuffled:
+        elif self.index_of_algorithm_chosen == 3 and not self.shuffled and self.array_sorted[1] == 3:
             self.bubble_sort.display_information()
         else:
             self.display_information()
@@ -51,23 +52,29 @@ class Algorithm(Window):
     def shuffle_array(self):
         self.sort_state = False
         random.shuffle(self.array_of_numbers)
-        self.rectangles.set_color_to_default_value()
         self.shuffled = True
+        
+        self.array_sorted = [False,-1]
+        
         self.bubble_sort.number_of_swaps = 0
         self.merge_sort.array_accesses = 0
         self.merge_sort.comparisons = 0
 
     
     def visualize(self):
-        
-        if self.index_of_algorithm_chosen == 0:
-            self.shuffled = False
-            self.merge_sort.display(super())
-            self.set_sort_state_to(False)
-        elif self.index_of_algorithm_chosen == 1: self.set_sort_state_to(False) 
-        elif self.index_of_algorithm_chosen == 2: self.set_sort_state_to(False) 
-        elif self.index_of_algorithm_chosen == 3: 
-            self.shuffled = False
-            self.bubble_sort.display(super())
-            self.set_sort_state_to(False)
+        if self.array_sorted[0]:
+            self.display_rectangles()
+        else:      
+            if self.index_of_algorithm_chosen == 0:
+                self.shuffled = False
+                self.merge_sort.display(super())
+                self.array_sorted = [True,0]
+                self.set_sort_state_to(False)
+            elif self.index_of_algorithm_chosen == 1: self.set_sort_state_to(False) 
+            elif self.index_of_algorithm_chosen == 2: self.set_sort_state_to(False) 
+            elif self.index_of_algorithm_chosen == 3:
+                self.array_sorted = [True,3] 
+                self.shuffled = False
+                self.bubble_sort.display(super())
+                self.set_sort_state_to(False)
 

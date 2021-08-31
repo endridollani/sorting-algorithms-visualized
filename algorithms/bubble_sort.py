@@ -63,7 +63,9 @@ class BubbleSort:
     def display(self, window):
         self.window = window
         self.bubble_sort()
-        self.rectangles.sort_finished(self.window.get_window(), self.delay)
+        self.swap_index = -1
+        self.rectangles.draw_rectangles(window.get_window())
+        self.rectangles.sort_finished(self.window.get_window(), 0.01)
 
     def swap(self, index):
         self.number_of_swaps += 1

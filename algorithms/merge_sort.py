@@ -54,6 +54,8 @@ class MergeSort:
         self.window = window
         self.merge_sort(self.array_of_numbers, 0,
                         len(self.array_of_numbers) - 1)
+        self.rectangles.draw_rectangles(window.get_window())
+        self.rectangles.sort_finished(self.window.get_window(), 0.01)
 
     def merge(self,arr, l, m, r):
         n1 = m - l + 1
