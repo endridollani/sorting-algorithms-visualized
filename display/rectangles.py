@@ -28,33 +28,31 @@ class Rectangles():
                 pygame.draw.rect(window.get_window(),(0, 150, 255), rectangle)
             elif pos == li or pos == ri:
                 pygame.draw.rect(window.get_window(),(255, 0, 0), rectangle)
-           
-            # elif pos > l and pos < r:
-            #     pygame.draw.rect(window.get_window(),(255, 0, 0), rectangle)
             else:
                 pygame.draw.rect(window.get_window(),(255, 255, 255), rectangle)
 
-
+    def draw_rectangles(self, window):
+        for i in self.array_of_numbers:
+            val = i
+            pos = self.array_of_numbers.index(val)
+            rectangle = self.get_rectangle_at(pos,val)
             
+            pygame.draw.rect(window,(255,255,255), rectangle)
 
-
-        
-
-    def draw_rectangles(self,window,swaped_colour = (255,0,0),swap1 = None,swap2 = None):
+    def draw_bubble_sort(self,window,swap_index):
 
         for i in self.array_of_numbers:
             val = i
             pos = self.array_of_numbers.index(val)
             rectangle = self.get_rectangle_at(pos,val)
             
-            if swap1 == pos:
-                pygame.draw.rect(window,swaped_colour, rectangle)
-                swap1 = None
-            elif swap2 == pos:
-                pygame.draw.rect(window,swaped_colour, rectangle)
-                swap2 = None
+
+            if pos == swap_index or pos == swap_index+1:
+                pygame.draw.rect(window,(255,0,0), rectangle)
+            
             else:
-                pygame.draw.rect(window,self.default_color, rectangle)
+                pygame.draw.rect(window,(255,255,255), rectangle)
+                
             
     def sort_finished(self,window,delay):
         for i in self.array_of_numbers:
