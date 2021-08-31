@@ -38,6 +38,9 @@ class BubbleSort:
 
     def get_array_writes(self): return self.number_of_swaps * 2
 
+    def display_information(self):
+        pass
+
     def display(self, window, delay):
         array_size = len(self.array_of_numbers)
         iterations = len(self.array_of_numbers) - 1
