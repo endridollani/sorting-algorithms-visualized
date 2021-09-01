@@ -29,8 +29,6 @@ def display_sort_algorithm_information(window, algorithm, comparisons, array_acc
 class QuickSort:
     def __init__(self, rectangles, delay_in_millisecondes):
         self.rectangles = rectangles
-        # self.swaped = False
-        # self.number_of_swaps = 0
         self.array_of_numbers = self.rectangles.get_array_of_numbers()
         self.window = None
         self.delay = delay_in_millisecondes / 1000
@@ -45,9 +43,9 @@ class QuickSort:
         display_sort_algorithm_information(self.window.get_window(
         ), "Quick Sort", self.comparisons, self.array_accesses, self.rectangles.number_of_rectangles, self.delay)
 
-    def draw_rectangles(self, l, r, m, li, ri):
+    def draw_rectangles(self, start, end, pivot):
         self.window.set_bg()
-        self.rectangles.draw_merge_sort(self.window, l, r, m, li, ri)
+        self.rectangles.draw_merge_sort(self.window, start, end, pivot)
         display_sort_algorithm_information(self.window.get_window(
         ), "Quick Sort", self.comparisons, self.array_accesses, self.rectangles.number_of_rectangles, self.delay)
         pygame.display.flip()
@@ -81,7 +79,7 @@ class QuickSort:
         # Initializing pivot's index to start
         pivot_index = start
         pivot = array[pivot_index]
-
+        self.array_accesses += 1
         # This loop runs till start pointer crosses
         # end pointer, and when it does we swap the
         # pivot with element on end pointer
@@ -90,21 +88,35 @@ class QuickSort:
             # Increment the start pointer till it finds an
             # element greater than  pivot
             while start < len(array) and array[start] <= pivot:
+                self.comparisons += 2
+                self.array_accesses += 1
                 start += 1
+                time.sleep(self.delay)
+                self.draw_rectangles(start,end,pivot)
 
             # Decrement the end pointer till it finds an
             # element less than pivot
             while array[end] > pivot:
+                self.comparisons += 1
+                self.array_accesses += 1
                 end -= 1
+                time.sleep(self.delay)
+                self.draw_rectangles(start,end,pivot)
 
             # If start and end have not crossed each other,
             # swap the numbers on start and end
             if(start < end):
+                self.comparisons += 1
                 array[start], array[end] = array[end], array[start]
+                time.sleep(self.delay)
+                self.draw_rectangles(start,end,pivot)
 
         # Swap pivot element with element on end pointer.
         # This puts pivot on its correct sorted place.
         array[end], array[pivot_index] = array[pivot_index], array[end]
+        self.array_accesses += 2
+        time.sleep(self.delay)
+        self.draw_rectangles(start,end,pivot_index)
 
         # Returning end pointer to divide the array into 2
         return end
