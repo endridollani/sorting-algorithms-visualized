@@ -5,6 +5,7 @@ from window import Window
 from pygame import time
 from algorithms import bubble_sort as bs
 from algorithms import merge_sort as ms
+from algorithms import quick_sort as qs
 
 pygame.font.init()
 font = pygame.font.SysFont('arial',15)
@@ -21,6 +22,7 @@ class Algorithm(Window):
         self.index_of_algorithm_chosen = None
         self.bubble_sort = bs.BubbleSort(self.rectangles,delay_in_millisecondes)
         self.merge_sort = ms.MergeSort(self.rectangles,delay_in_millisecondes)
+        self.quick_sort = qs.QuickSort(self.rectangles,delay_in_millisecondes)
         self.shuffled = False
         self.array_sorted = [False,]
 
@@ -34,6 +36,8 @@ class Algorithm(Window):
     def display_rectangles(self):
         if self.index_of_algorithm_chosen == 0 and not self.shuffled and self.array_sorted[1] == 0:
             self.merge_sort.display_information()
+        elif self.index_of_algorithm_chosen == 1 and not self.shuffled and self.array_sorted[1] == 1:
+            self.quick_sort.display_information()
         elif self.index_of_algorithm_chosen == 3 and not self.shuffled and self.array_sorted[1] == 3:
             self.bubble_sort.display_information()
         else:
@@ -70,11 +74,14 @@ class Algorithm(Window):
                 self.merge_sort.display(super())
                 self.array_sorted = [True,0]
                 self.set_sort_state_to(False)
-            elif self.index_of_algorithm_chosen == 1: self.set_sort_state_to(False) 
+            elif self.index_of_algorithm_chosen == 1: 
+                self.shuffled = False
+                self.quick_sort.display(super())
+                self.array_sorted = [True,1]
+                self.set_sort_state_to(False) 
             elif self.index_of_algorithm_chosen == 2: self.set_sort_state_to(False) 
             elif self.index_of_algorithm_chosen == 3:
                 self.array_sorted = [True,3] 
                 self.shuffled = False
                 self.bubble_sort.display(super())
                 self.set_sort_state_to(False)
-
