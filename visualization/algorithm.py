@@ -61,8 +61,8 @@ class Algorithm(Window):
         self.array_sorted = [False,-1]
         
         self.bubble_sort.number_of_swaps = 0
-        self.merge_sort.array_accesses = 0
-        self.merge_sort.comparisons = 0
+        self.quick_sort.array_accesses,self.merge_sort.array_accesses = 0,0
+        self.quick_sort.comparisons,self.merge_sort.comparisons = 0,0
 
     
     def visualize(self):
