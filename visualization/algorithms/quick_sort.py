@@ -45,15 +45,15 @@ class QuickSort:
 
     def draw_rectangles(self, start, end, pivot):
         self.window.set_bg()
-        self.rectangles.draw_merge_sort(self.window, start, end, pivot)
+        self.rectangles.draw_quick_sort(
+            self.window.get_window(), start, end, pivot)
         display_sort_algorithm_information(self.window.get_window(
         ), "Quick Sort", self.comparisons, self.array_accesses, self.rectangles.number_of_rectangles, self.delay)
         pygame.display.flip()
 
     def display(self, window):
         self.window = window
-        self.quick_sort(self.array_of_numbers[0], self.array_of_numbers[len(
-            self.array_of_numbers) - 1], self.array_of_numbers)
+        self.quick_sort(0, len(self.array_of_numbers) - 1, self.array_of_numbers)
         self.rectangles.draw_rectangles(window.get_window())
         self.rectangles.sort_finished(self.window.get_window(), 0.01)
 
@@ -92,7 +92,7 @@ class QuickSort:
                 self.array_accesses += 1
                 start += 1
                 time.sleep(self.delay)
-                self.draw_rectangles(start,end,pivot)
+                self.draw_rectangles(start, end, pivot)
 
             # Decrement the end pointer till it finds an
             # element less than pivot
@@ -101,7 +101,7 @@ class QuickSort:
                 self.array_accesses += 1
                 end -= 1
                 time.sleep(self.delay)
-                self.draw_rectangles(start,end,pivot)
+                self.draw_rectangles(start, end, pivot)
 
             # If start and end have not crossed each other,
             # swap the numbers on start and end
@@ -109,14 +109,14 @@ class QuickSort:
                 self.comparisons += 1
                 array[start], array[end] = array[end], array[start]
                 time.sleep(self.delay)
-                self.draw_rectangles(start,end,pivot)
+                self.draw_rectangles(start, end, pivot)
 
         # Swap pivot element with element on end pointer.
         # This puts pivot on its correct sorted place.
         array[end], array[pivot_index] = array[pivot_index], array[end]
         self.array_accesses += 2
         time.sleep(self.delay)
-        self.draw_rectangles(start,end,pivot_index)
+        self.draw_rectangles(start, end, pivot_index)
 
         # Returning end pointer to divide the array into 2
         return end
