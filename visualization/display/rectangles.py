@@ -26,13 +26,18 @@ class Rectangles():
             
             pygame.draw.rect(window,(255,255,255), rectangle)
 
-    def draw_quick_sort(self,window):
+    def draw_quick_sort(self,window,start,end,pivot):
         for i in self.array_of_numbers:
             val = i
             pos = self.array_of_numbers.index(val)
             rectangle = self.get_rectangle_at(pos,val)
             
-            pygame.draw.rect(window,(255,255,255), rectangle)
+            if pos == start or pos == end:
+                pygame.draw.rect(window,(255, 0, 0), rectangle)
+            elif pos == pivot:
+                pygame.draw.rect(window,(0,255,255), rectangle)
+            else:
+                pygame.draw.rect(window,(255,255,255), rectangle)
 
 
     def draw_merge_sort(self,window,l,r,m,li,ri):
