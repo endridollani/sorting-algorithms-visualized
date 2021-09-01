@@ -6,6 +6,7 @@ from pygame import time
 from algorithms import bubble_sort as bs
 from algorithms import merge_sort as ms
 from algorithms import quick_sort as qs
+from algorithms import heap_sort as hs
 
 pygame.font.init()
 font = pygame.font.SysFont('arial',15)
@@ -23,6 +24,7 @@ class Algorithm(Window):
         self.bubble_sort = bs.BubbleSort(self.rectangles,delay_in_millisecondes)
         self.merge_sort = ms.MergeSort(self.rectangles,delay_in_millisecondes)
         self.quick_sort = qs.QuickSort(self.rectangles,delay_in_millisecondes)
+        self.heap_sort = hs.HeapSort(self.rectangles,delay_in_millisecondes)
         self.shuffled = False
         self.array_sorted = [False,]
 
@@ -38,6 +40,8 @@ class Algorithm(Window):
             self.merge_sort.display_information()
         elif self.index_of_algorithm_chosen == 1 and not self.shuffled and self.array_sorted[1] == 1:
             self.quick_sort.display_information()
+        elif self.index_of_algorithm_chosen == 2 and not self.shuffled and self.array_sorted[1] == 2:
+            self.heap_sort.display_information()
         elif self.index_of_algorithm_chosen == 3 and not self.shuffled and self.array_sorted[1] == 3:
             self.bubble_sort.display_information()
         else:
@@ -61,8 +65,8 @@ class Algorithm(Window):
         self.array_sorted = [False,-1]
         
         self.bubble_sort.number_of_swaps = 0
-        self.quick_sort.array_accesses,self.merge_sort.array_accesses = 0,0
-        self.quick_sort.comparisons,self.merge_sort.comparisons = 0,0
+        self.quick_sort.array_accesses,self.heap_sort.array_accesses,self.merge_sort.array_accesses = 0,0,0
+        self.quick_sort.comparisons,self.heap_sort.comparisons,self.merge_sort.comparisons = 0,0,0
 
     
     def visualize(self):
@@ -79,7 +83,11 @@ class Algorithm(Window):
                 self.quick_sort.display(super())
                 self.array_sorted = [True,1]
                 self.set_sort_state_to(False) 
-            elif self.index_of_algorithm_chosen == 2: self.set_sort_state_to(False) 
+            elif self.index_of_algorithm_chosen == 2: 
+                self.shuffled = False
+                self.heap_sort.display(super())
+                self.array_sorted = [True,1]
+                self.set_sort_state_to(False) 
             elif self.index_of_algorithm_chosen == 3:
                 self.array_sorted = [True,3] 
                 self.shuffled = False
