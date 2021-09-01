@@ -10,7 +10,7 @@ the array and delay time in milliseconds, then select one of the sorting algorit
 - [x] Bubble Sort
 - [x] Merge Sort
 - [x] Quick Sort
-- [ ] Heap Sort
+- [x] Heap Sort
 
 ---
 
