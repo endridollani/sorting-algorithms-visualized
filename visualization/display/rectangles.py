@@ -38,7 +38,14 @@ class Rectangles():
                 pygame.draw.rect(window,(0,255,255), rectangle)
             else:
                 pygame.draw.rect(window,(255,255,255), rectangle)
-
+    
+    def draw_heap_sort(self,window):
+        for i in self.array_of_numbers:
+            val = i
+            pos = self.array_of_numbers.index(val)
+            rectangle = self.get_rectangle_at(pos,val)
+            
+            pygame.draw.rect(window,(255,255,255), rectangle)
 
     def draw_merge_sort(self,window,l,r,m,li,ri):
         for i in self.array_of_numbers:
