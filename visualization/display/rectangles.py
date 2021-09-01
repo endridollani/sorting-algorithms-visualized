@@ -17,6 +17,24 @@ class Rectangles():
         left_p = (1300 / self.number_of_rectangles) * pos
         return pygame.Rect(left_p,700 - (650 * (val + 1) / (self.number_of_rectangles + 5)), (1300 / self.number_of_rectangles),(650 * (val + 1) / self.number_of_rectangles))
 
+
+    def draw_rectangles(self, window):
+        for i in self.array_of_numbers:
+            val = i
+            pos = self.array_of_numbers.index(val)
+            rectangle = self.get_rectangle_at(pos,val)
+            
+            pygame.draw.rect(window,(255,255,255), rectangle)
+
+    def draw_quick_sort(self,window):
+        for i in self.array_of_numbers:
+            val = i
+            pos = self.array_of_numbers.index(val)
+            rectangle = self.get_rectangle_at(pos,val)
+            
+            pygame.draw.rect(window,(255,255,255), rectangle)
+
+
     def draw_merge_sort(self,window,l,r,m,li,ri):
         for i in self.array_of_numbers:
             val = i
@@ -30,14 +48,6 @@ class Rectangles():
                 pygame.draw.rect(window.get_window(),(255, 0, 0), rectangle)
             else:
                 pygame.draw.rect(window.get_window(),(255, 255, 255), rectangle)
-
-    def draw_rectangles(self, window):
-        for i in self.array_of_numbers:
-            val = i
-            pos = self.array_of_numbers.index(val)
-            rectangle = self.get_rectangle_at(pos,val)
-            
-            pygame.draw.rect(window,(255,255,255), rectangle)
 
     def draw_bubble_sort(self,window,swap_index):
 
