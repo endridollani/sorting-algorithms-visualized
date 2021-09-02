@@ -25,10 +25,10 @@ def display_sort_algorithm_information(window, algorithm, swap_number, array_wri
     window.blit(delays, (10, 90))
 
 class BubbleSort:
-    def __init__(self, rectangles, delay_in_millisecondes):
+    def __init__(self, rectangles, delay_in_millisecondes,window):
         self.rectangles = rectangles
         self.array_of_numbers = self.rectangles.get_array_of_numbers()
-        self.window = None
+        self.window = window
         self.number_of_swaps = 0
         self.delay = delay_in_millisecondes / 1000
         self.swap_index = -1
@@ -60,11 +60,10 @@ class BubbleSort:
             array_size -= 1
             iterations -= 1
 
-    def display(self, window):
-        self.window = window
+    def display(self):
         self.bubble_sort()
         self.swap_index = -1
-        self.rectangles.draw_rectangles(window.get_window())
+        self.rectangles.draw_rectangles(self.window.get_window())
         self.rectangles.sort_finished(self.window.get_window(), 0.01)
 
     def swap(self, index):

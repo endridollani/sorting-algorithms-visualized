@@ -27,12 +27,12 @@ def display_sort_algorithm_information(window, algorithm, comparisons, array_acc
 
 
 class MergeSort:
-    def __init__(self, rectangles,delay_in_millisecondes):
+    def __init__(self, rectangles,delay_in_millisecondes,window):
         self.rectangles = rectangles
         # self.swaped = False
         # self.number_of_swaps = 0
         self.array_of_numbers = self.rectangles.get_array_of_numbers()
-        self.window = None
+        self.window = window
         self.delay = delay_in_millisecondes / 1000
         self.comparisons = 0
         self.array_accesses = 0
@@ -50,11 +50,10 @@ class MergeSort:
         display_sort_algorithm_information(self.window.get_window(),"Merge Sort",self.comparisons,self.array_accesses,self.rectangles.number_of_rectangles,self.delay)
         pygame.display.flip()
 
-    def display(self, window):
-        self.window = window
+    def display(self):
         self.merge_sort(self.array_of_numbers, 0,
                         len(self.array_of_numbers) - 1)
-        self.rectangles.draw_rectangles(window.get_window())
+        self.rectangles.draw_rectangles(self.window.get_window())
         self.rectangles.sort_finished(self.window.get_window(), 0.01)
 
     def merge(self,arr, l, m, r):
