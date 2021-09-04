@@ -29,19 +29,14 @@ class EventHandler(Window):
                 if event.user_type == pygame_gui.UI_BUTTON_PRESSED:
                     if event.ui_element == self.shuffle_btn:
                         self.algorithm.shuffle_array()
-                        print('Array got Shuffled')
                     if event.ui_element == self.merge_sort_btn:
                         self.algorithm.set_index_of_algorithm_chosen(index=0)
-                        print('merge_sort initiated')
                     if event.ui_element == self.quick_sort_btn:
                         self.algorithm.set_index_of_algorithm_chosen(index=1)
-                        print('quick_sort initiated')
                     if event.ui_element == self.heap_sort_btn:
                         self.algorithm.set_index_of_algorithm_chosen(index=2)
-                        print('heap_sort initiated')
                     if event.ui_element == self.bubble_sort_btn:
                         self.algorithm.set_index_of_algorithm_chosen(index=3)
-                        print('bubble_sort initiated')
 
             self.manager.process_events(event)
             
