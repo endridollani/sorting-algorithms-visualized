@@ -24,5 +24,7 @@ Check if you have Python 3 and pip3 installed on your system.
 If they are installed you can execute the line below inside the project directory: 
 
 `pip3 install pygame`
-'pip3 install pygame_gui'
+
+`pip3 install pygame_gui`
+
 `python3 app.py`
