@@ -18,9 +18,11 @@ the array and delay time in milliseconds, then select one of the sorting algorit
 
 Clon the repo
 
-`git clone https://github.com/endridollani/sorting-algorithms-visualized.git/SortingVisualized`
+`git clone https://github.com/endridollani/sorting-algorithms-visualized.git/sorting_visualized`
 
-Check if you have Python 3 installed on your system
-If Python 3 is installed you can execute the line below inside the project directory:  
+Check if you have Python 3 and pip3 installed on your system.
+If they are installed you can execute the line below inside the project directory: 
 
+`pip3 install pygame`
+'pip3 install pygame_gui'
 `python3 app.py`
