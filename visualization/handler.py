@@ -7,11 +7,16 @@ class EventHandler(Window):
         super().__init__()
         self.button = super().get_button()
         self.manager = self.button.get_manager()
-        self.shuffle_btn = self.button.get_shuffle_button()
-        self.merge_sort_btn = self.button.get_merge_sort_button()
-        self.quick_sort_btn = self.button.get_quick_sort_button()
-        self.heap_sort_btn = self.button.get_heap_sort_button()
-        self.bubble_sort_btn = self.button.get_bubble_sort_button()
+        self.shuffle_button = self.button.get_shuffle_button()
+        self.bubble_sort_button = self.button.get_bubble_sort_button()
+        self.selection_sort_button = self.button.get_selection_sort_button()
+        self.insertion_sort_button = self.button.get_insertion_sort_button()
+        self.merge_sort_button = self.button.get_merge_sort_button()
+        self.quick_sort_button = self.button.get_quick_sort_button()
+        self.heap_sort_button = self.button.get_heap_sort_button()
+        self.tim_sort_button = self.button.get_tim_sort_button()
+        self.intro_sort_button = self.button.get_intro_sort_button()
+
 
         self.algorithm = None
 
@@ -27,16 +32,33 @@ class EventHandler(Window):
         
             elif event.type == pygame.USEREVENT:
                 if event.user_type == pygame_gui.UI_BUTTON_PRESSED:
-                    if event.ui_element == self.shuffle_btn:
+
+                    if event.ui_element == self.shuffle_button:
                         self.algorithm.shuffle_array()
-                    if event.ui_element == self.merge_sort_btn:
+
+                    if event.ui_element == self.bubble_sort_button:
                         self.algorithm.set_index_of_algorithm_chosen(index=0)
-                    if event.ui_element == self.quick_sort_btn:
+
+                    if event.ui_element == self.selection_sort_button:
                         self.algorithm.set_index_of_algorithm_chosen(index=1)
-                    if event.ui_element == self.heap_sort_btn:
+                   
+                    if event.ui_element == self.insertion_sort_button:
                         self.algorithm.set_index_of_algorithm_chosen(index=2)
-                    if event.ui_element == self.bubble_sort_btn:
+
+                    if event.ui_element == self.merge_sort_button:
                         self.algorithm.set_index_of_algorithm_chosen(index=3)
+
+                    if event.ui_element == self.quick_sort_button:
+                        self.algorithm.set_index_of_algorithm_chosen(index=4)
+
+                    if event.ui_element == self.heap_sort_button:
+                        self.algorithm.set_index_of_algorithm_chosen(index=5)
+                    
+                    if event.ui_element == self.tim_sort_button:
+                        self.algorithm.set_index_of_algorithm_chosen(index=6)
+
+                    if event.ui_element == self.intro_sort_button:
+                        self.algorithm.set_index_of_algorithm_chosen(index=7)
 
             self.manager.process_events(event)
             

@@ -37,13 +37,13 @@ class Algorithm(Window):
 
     def display_rectangles(self):
         if self.index_of_algorithm_chosen == 0 and not self.shuffled and self.array_sorted[1] == 0:
-            self.merge_sort.display_information()
-        elif self.index_of_algorithm_chosen == 1 and not self.shuffled and self.array_sorted[1] == 1:
-            self.quick_sort.display_information()
-        elif self.index_of_algorithm_chosen == 2 and not self.shuffled and self.array_sorted[1] == 2:
-            self.heap_sort.display_information()
-        elif self.index_of_algorithm_chosen == 3 and not self.shuffled and self.array_sorted[1] == 3:
             self.bubble_sort.display_information()
+        elif self.index_of_algorithm_chosen == 3 and not self.shuffled and self.array_sorted[1] == 3:
+            self.merge_sort.display_information()
+        elif self.index_of_algorithm_chosen == 4 and not self.shuffled and self.array_sorted[1] == 4:
+            self.quick_sort.display_information()
+        elif self.index_of_algorithm_chosen == 5 and not self.shuffled and self.array_sorted[1] == 5:
+            self.heap_sort.display_information()
         else:
             self.display_information()
         self.rectangles.draw_rectangles(self.window)
@@ -74,22 +74,42 @@ class Algorithm(Window):
             self.display_rectangles()
         else:      
             if self.index_of_algorithm_chosen == 0:
-                self.shuffled = False
-                self.merge_sort.display()
-                self.array_sorted = [True,0]
-                self.set_sort_state_to(False)
-            elif self.index_of_algorithm_chosen == 1: 
-                self.shuffled = False
-                self.quick_sort.display()
-                self.array_sorted = [True,1]
-                self.set_sort_state_to(False) 
-            elif self.index_of_algorithm_chosen == 2: 
-                self.shuffled = False
-                self.heap_sort.display()
-                self.array_sorted = [True,2]
-                self.set_sort_state_to(False) 
-            elif self.index_of_algorithm_chosen == 3:
-                self.array_sorted = [True,3] 
+                self.array_sorted = [True,0] 
                 self.shuffled = False
                 self.bubble_sort.display()
+                self.set_sort_state_to(False)
+            elif self.index_of_algorithm_chosen == 1:
+                # self.array_sorted = [True,1] 
+                # self.shuffled = False
+                # self.selection_sort.display()
+                self.set_sort_state_to(False)
+            elif self.index_of_algorithm_chosen == 2:
+                # self.array_sorted = [True,2] 
+                # self.shuffled = False
+                # self.insertion_sort.display()
+                self.set_sort_state_to(False)
+            elif self.index_of_algorithm_chosen == 3:
+                self.array_sorted = [True,3]
+                self.shuffled = False
+                self.merge_sort.display()
+                self.set_sort_state_to(False)
+            elif self.index_of_algorithm_chosen == 4: 
+                self.array_sorted = [True,4]
+                self.shuffled = False
+                self.quick_sort.display()
+                self.set_sort_state_to(False) 
+            elif self.index_of_algorithm_chosen == 5: 
+                self.array_sorted = [True,5]
+                self.shuffled = False
+                self.heap_sort.display()
+                self.set_sort_state_to(False)
+            elif self.index_of_algorithm_chosen == 6:
+                # self.array_sorted = [True,6] 
+                # self.shuffled = False
+                # self.tim_sort.display()
+                self.set_sort_state_to(False)
+            elif self.index_of_algorithm_chosen == 7:
+                # self.array_sorted = [True,7] 
+                # self.shuffled = False
+                # self.intro_sort.display()
                 self.set_sort_state_to(False)
