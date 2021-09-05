@@ -22,9 +22,9 @@ class Button:
         
         self.heap_sort_button = self.set_button(relative_rect=pygame.Rect((985, 5), (100, 30)),text='Heap Sort')
         
-        self.tim_sort_button = self.set_button(relative_rect=pygame.Rect((1090, 5), (100, 30)),text='Tim Sort')
+        self.tim_sort_button = self.set_button(relative_rect=pygame.Rect((1090, 5), (100, 30)),text='TimSort')
         
-        self.intro_sort_button = self.set_button(relative_rect=pygame.Rect((1195, 5), (100, 30)),text='Intro Sort')
+        self.intro_sort_button = self.set_button(relative_rect=pygame.Rect((1195, 5), (100, 30)),text='IntroSort')
 
     
     def set_button(self,relative_rect,text):
