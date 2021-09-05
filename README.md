@@ -8,13 +8,13 @@ the array and delay time in milliseconds, then select one of the sorting algorit
 ## Sorting algorithms implemented
 
 - [x] Bubble Sort
-- [] Selection Sort
-- [] Insertion Sort
+- [ ] Selection Sort
+- [ ] Insertion Sort
 - [x] Merge Sort
 - [x] Quick Sort
 - [x] Heap Sort
-- [] TimSort (Hybrid of Merge and Insertion Sort)
-- [] IntroSort (Hybrid of Quick Sort,Heap Sort and Insertion Sort)
+- [ ] TimSort (Hybrid of Merge and Insertion Sort)
+- [ ] IntroSort (Hybrid of Quick Sort,Heap Sort and Insertion Sort)
 
 ---
 
