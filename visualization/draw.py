@@ -1,30 +1,24 @@
 import pygame
 import random
-from display import rectangles as rects
-from window import Window
+import rectangles as rects
 from pygame import time
-from algorithms import bubble_sort as bs
-from algorithms import merge_sort as ms
-from algorithms import quick_sort as qs
-from algorithms import heap_sort as hs
 
 pygame.font.init()
 font = pygame.font.SysFont('arial',15)
 
-class Algorithm(Window):
-    def __init__(self,number_of_rectangles,delay_in_millisecondes):
-        super().__init__()
+IS_REQUIRED_FOR_SORTING = False
+SORT_INDEX = -1
+
+
+
+class Draw():
+    def __init__(self,window,number_of_rectangles,delay_in_millisecondes):
         self.number_of_rectangles = number_of_rectangles
-        self.window = super().get_window()
+        self.window = window.get_window()
         self.rectangles = rects.Rectangles(self.number_of_rectangles)
         self.array_of_numbers = self.rectangles.get_array_of_numbers()
         self.delay_in_millisecondes = delay_in_millisecondes
         self.sort_state  = False
-        self.index_of_algorithm_chosen = None
-        self.bubble_sort = bs.BubbleSort(self.rectangles,delay_in_millisecondes, super())
-        self.merge_sort = ms.MergeSort(self.rectangles,delay_in_millisecondes,super())
-        self.quick_sort = qs.QuickSort(self.rectangles,delay_in_millisecondes,super())
-        self.heap_sort = hs.HeapSort(self.rectangles,delay_in_millisecondes,super())
         self.shuffled = False
         self.array_sorted = [False,-1]
 
