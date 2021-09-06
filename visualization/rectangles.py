@@ -3,7 +3,6 @@ import time
 import random
 pygame.init()
 
-
 class Rectangles():
     def __init__(self,number_of_rectangles):
         self.number_of_rectangles = number_of_rectangles

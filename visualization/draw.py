@@ -6,10 +6,6 @@ from pygame import time
 pygame.font.init()
 font = pygame.font.SysFont('arial',15)
 
-IS_REQUIRED_FOR_SORTING = False
-SORT_INDEX = -1
-
-
 
 class Draw():
     def __init__(self,window,number_of_rectangles,delay_in_millisecondes):
