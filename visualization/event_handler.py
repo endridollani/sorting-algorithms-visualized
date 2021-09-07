@@ -1,6 +1,6 @@
 import pygame
+from pygame import display
 import pygame_gui
-import draw
 from buttons import button
 
 
@@ -35,7 +35,11 @@ def get_user_input():
 class Handler():
     def __init__(self,manager):
         self.manager = manager
+        self.algorithm_display = None
     
+    def set_display_link(self,algorithm_display):
+        self.algorithm_display = algorithm_display
+
     def check_for_events(self, events):
         for event in events:
             if event.type == pygame.QUIT:
@@ -48,30 +52,29 @@ class Handler():
                 if event.user_type == pygame_gui.UI_BUTTON_PRESSED:
 
                     if event.ui_element == button.get('SHUFFLE'):
-                        # draw.shuffle_array()
-                        print("Hello")
+                        self.algorithm_display.shuffle_array()
                     if event.ui_element == button.get('BUBBLE_SORT'):
-                        draw.sort_index = 0
+                        self.algorithm_display.set_index_of_algorithm_chosen(0)
 
                     if event.ui_element == button.get('SELECTION_SORT'):
-                        draw.sort_index = 1
+                        self.algorithm_display.set_index_of_algorithm_chosen(1)
                    
                     if event.ui_element == button.get('INSERTION_SORT'):
-                        draw.sort_index = 2
+                        self.algorithm_display.set_index_of_algorithm_chosen(2)
 
                     if event.ui_element == button.get('MERGE_SORT'):
-                        draw.sort_index = 3
+                        self.algorithm_display.set_index_of_algorithm_chosen(3)
 
                     if event.ui_element == button.get('QUICK_SORT'):
-                        draw.sort_index = 4
+                        self.algorithm_display.set_index_of_algorithm_chosen(4)
 
                     if event.ui_element == button.get('HEAP_SORT'):
-                        draw.sort_index = 5
+                        self.algorithm_display.set_index_of_algorithm_chosen(5)
                     
                     if event.ui_element == button.get('TIM_SORT'):
-                        draw.sort_index = 6
+                        self.algorithm_display.set_index_of_algorithm_chosen(6)
 
                     if event.ui_element == button.get('INTRO_SORT'):
-                        draw.sort_index = 7
+                        self.algorithm_display.set_index_of_algorithm_chosen(7)
 
             self.manager.process_events(event)

@@ -15,7 +15,9 @@ if __name__ ==  "__main__":
             
     window = Window()
     handler = event_handler.Handler(window.get_manager())
-    display = draw.Draw(window,ARRAY_SIZE,DELAY)
+    algorithm_display = draw.Draw(window,ARRAY_SIZE,DELAY)
+    handler.set_display_link(algorithm_display)
+    
     
     while(running):
         time_delta = clock.tick(FPS) / 1000.0
@@ -24,12 +26,10 @@ if __name__ ==  "__main__":
         window.set_background() 
         window.display_buttons()
 
-        if display.sort_state:
-            # display.rectangle_visualization()
-            print('ss')
+        if algorithm_display.sort_state:
+            algorithm_display.rectangle_visualization()
         else:
-            # display.rectangles()
-            print("sss")
+            algorithm_display.rectangle_bar_chart()
 
         pygame.display.flip()
 

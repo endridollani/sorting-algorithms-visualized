@@ -8,6 +8,7 @@ class Rectangles():
         self.number_of_rectangles = number_of_rectangles
         self.array_of_numbers = self.initialize_new_array_of_numbers()
         self.default_color = (255,255,255)
+    
     def set_color_to_default_value(self): self.default_color = (255,255,255) 
 
     def get_array_of_numbers(self): return self.array_of_numbers
@@ -15,7 +16,6 @@ class Rectangles():
     def get_rectangle_at(self,pos,val):
         left_p = (1300 / self.number_of_rectangles) * pos
         return pygame.Rect(left_p,700 - (650 * (val + 1) / (self.number_of_rectangles + 5)), (1300 / self.number_of_rectangles),(650 * (val + 1) / self.number_of_rectangles))
-
 
     def draw_rectangles(self, window):
         for i in self.array_of_numbers:
