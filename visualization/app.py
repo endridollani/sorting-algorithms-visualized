@@ -4,9 +4,9 @@ import draw
 from window import Window
 import event_handler
 
+pygame.init()
 ARRAY_SIZE,DELAY = event_handler.get_user_input()
 
-pygame.init()
 
 if __name__ ==  "__main__":
     running = True
@@ -15,10 +15,11 @@ if __name__ ==  "__main__":
             
     window = Window()
     handler = event_handler.Handler(window.get_manager())
-    algorithm_display = draw.Draw(window,ARRAY_SIZE,DELAY)
-    handler.set_display_link(algorithm_display)
+    draw_to_window = draw.Draw(window,ARRAY_SIZE,DELAY)
     
-    
+    #Links the event occurred with the draw.py class wich has the logic behind that event.
+    handler.set_button_event_logic_handler(draw_to_window)
+     
     while(running):
         time_delta = clock.tick(FPS) / 1000.0
         handler.check_for_events(pygame.event.get())
@@ -26,10 +27,10 @@ if __name__ ==  "__main__":
         window.set_background() 
         window.display_buttons()
 
-        if algorithm_display.sort_state:
-            algorithm_display.rectangle_visualization()
+        if draw_to_window.sort_state:
+            draw_to_window.rectangle_visualization()
         else:
-            algorithm_display.rectangle_bar_chart()
+            draw_to_window.rectangle_bar_chart()
 
         pygame.display.flip()
 

@@ -37,7 +37,7 @@ class Handler():
         self.manager = manager
         self.algorithm_display = None
     
-    def set_display_link(self,algorithm_display):
+    def set_button_event_logic_handler(self,algorithm_display):
         self.algorithm_display = algorithm_display
 
     def check_for_events(self, events):
