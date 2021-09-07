@@ -16,7 +16,7 @@ if __name__ ==  "__main__":
     window = Window()
     handler = event_handler.Handler(window.get_manager())
     draw_to_window = draw.Draw(window,ARRAY_SIZE,DELAY)
-    
+
     #Links the event occurred with the draw.py class wich has the logic behind that event.
     handler.set_button_event_logic_handler(draw_to_window)
      
@@ -27,8 +27,8 @@ if __name__ ==  "__main__":
         window.set_background() 
         window.display_buttons()
 
-        if draw_to_window.sort_state:
-            draw_to_window.rectangle_visualization()
+        if draw_to_window.is_required_for_sorting:
+            draw_to_window.sort_visualization()
         else:
             draw_to_window.rectangle_bar_chart()
 

@@ -30,15 +30,15 @@ def get_user_input():
         except ValueError:
             print("Value Error! Enter an number:")
     
-    return (array_size,delay_in_millisecondes)
+    return (array_size,delay_in_millisecondes/1000)
 
 class Handler():
     def __init__(self,manager):
         self.manager = manager
-        self.algorithm_display = None
+        self.draw_to_window = None
     
-    def set_button_event_logic_handler(self,algorithm_display):
-        self.algorithm_display = algorithm_display
+    def set_button_event_logic_handler(self,draw_to_window):
+        self.draw_to_window = draw_to_window
 
     def check_for_events(self, events):
         for event in events:
@@ -52,29 +52,29 @@ class Handler():
                 if event.user_type == pygame_gui.UI_BUTTON_PRESSED:
 
                     if event.ui_element == button.get('SHUFFLE'):
-                        self.algorithm_display.shuffle_array()
+                        self.draw_to_window.shuffle_array()
                     if event.ui_element == button.get('BUBBLE_SORT'):
-                        self.algorithm_display.set_index_of_algorithm_chosen(0)
+                        self.draw_to_window.index_of_algorithm_chosen(0)
 
                     if event.ui_element == button.get('SELECTION_SORT'):
-                        self.algorithm_display.set_index_of_algorithm_chosen(1)
+                        self.draw_to_window.index_of_algorithm_chosen(1)
                    
                     if event.ui_element == button.get('INSERTION_SORT'):
-                        self.algorithm_display.set_index_of_algorithm_chosen(2)
+                        self.draw_to_window.index_of_algorithm_chosen(2)
 
                     if event.ui_element == button.get('MERGE_SORT'):
-                        self.algorithm_display.set_index_of_algorithm_chosen(3)
+                        self.draw_to_window.index_of_algorithm_chosen(3)
 
                     if event.ui_element == button.get('QUICK_SORT'):
-                        self.algorithm_display.set_index_of_algorithm_chosen(4)
+                        self.draw_to_window.index_of_algorithm_chosen(4)
 
                     if event.ui_element == button.get('HEAP_SORT'):
-                        self.algorithm_display.set_index_of_algorithm_chosen(5)
+                        self.draw_to_window.index_of_algorithm_chosen(5)
                     
                     if event.ui_element == button.get('TIM_SORT'):
-                        self.algorithm_display.set_index_of_algorithm_chosen(6)
+                        self.draw_to_window.index_of_algorithm_chosen(6)
 
                     if event.ui_element == button.get('INTRO_SORT'):
-                        self.algorithm_display.set_index_of_algorithm_chosen(7)
+                        self.draw_to_window.index_of_algorithm_chosen(7)
 
             self.manager.process_events(event)

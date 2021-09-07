@@ -1,25 +1,49 @@
 import pygame
 import random
-from pygame import time
+from algorithms import rectangles
+from algorithms import bubble_sort
 
-from algorithms import sort
-
-pygame.font.init()
-font = pygame.font.SysFont('arial',15)
-
-
-class Draw():
+class Draw(rectangles.Rectangles):
     def __init__(self,window,number_of_rectangles,delay_in_millisecondes):
+        super().__init__(window, number_of_rectangles, delay_in_millisecondes)
+        
+        self.window = window
         self.number_of_rectangles = number_of_rectangles
-        self.window = window.get_window()
-        self.win = window
-        self.array_of_numbers = self.rectangles.get_array_of_numbers()
-        self.delay_in_millisecondes = delay_in_millisecondes / 1000
-        self.sort_state  = False
+        self.delay_in_millisecondes = delay_in_millisecondes
+        # self.win = window
+        # self.array_of_numbers = self.rectangles.get_array_of_numbers()
+        self.bs = bubble_sort.BubbleSort(self.window,self.number_of_rectangles,self.delay_in_millisecondes)
+
+        self.is_required_for_sorting  = False
         self.sort_index = -1
         self.shuffled = False
-        self.array_sorted = [False,-1]
 
+    def index_of_algorithm_chosen(self, index):
+        self.sort_index = index
+        self.is_required_for_sorting = True
+
+    def shuffle_array(self):
+        self.sort_state = False
+        random.shuffle(super().get_array_of_numbers())
+        self.shuffled = True
+        self.is_required_for_sorting = False
+        
+        # self.bubble_sort.number_of_swaps,self.heap_sort.swaps = 0,0
+        # self.quick_sort.array_accesses,self.heap_sort.array_accesses,self.merge_sort.array_accesses = 0,0,0
+        # self.quick_sort.comparisons,self.merge_sort.comparisons = 0,0
+
+    def sort_visualization(self):
+        if self.sort_index == 0:
+            self.bs.sort()
+         
+        self.is_required_for_sorting = False
+        self.shuffled = False
+    
+    def rectangle_bar_chart(self):
+        if self.sort_index == 0:
+            self.bs.draw()
+        else:
+            super().draw()
     # # def display_information(self):
     # #     number_of_rectangles_displayed = font.render(f'Rectangles Drawn: {self.number_of_rectangles}', True, (255, 255, 255), (0, 0, 0))
     # #     delay = font.render(f'Delay {self.delay_in_millisecondes} ms', True, (255, 255, 255), (0, 0, 0))

@@ -6,7 +6,7 @@ WIDTH,HEIGHT = 1300,700
 
 class Window:
     def __init__(self):
-        self.window = pygame.display.set_mode((WIDTH,HEIGHT), pygame.SCALED)
+        self.display = pygame.display.set_mode((WIDTH,HEIGHT), pygame.SCALED)
         self.caption = pygame.display.set_caption("Visualized Sorting")
         self.background = pygame.Surface((WIDTH,HEIGHT))
         
@@ -21,7 +21,7 @@ class Window:
     
     #Sets window background to black
     def set_background(self):
-        self.window.blit(self.background, (0, 0))
+        self.display.blit(self.background, (0, 0))
 
     #Updates pygame_gui manager    
     def update_gui_manager(self, delta_time):
@@ -29,9 +29,9 @@ class Window:
 
     #Displays buttons to the screen
     def display_buttons(self):
-        self.manager.draw_ui(self.window)
+        self.manager.draw_ui(self.display)
 
-    #Returns window
-    def get_window(self): return self.window
+    #Returns display
+    def get_display(self): return self.display
 
     def get_manager(self): return self.manager
