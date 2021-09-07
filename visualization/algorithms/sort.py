@@ -1,4 +1,5 @@
 import pygame
+import time
 from algorithms.information import display_sort_algorithm_information
 
 class Sort:
@@ -40,6 +41,7 @@ class Sort:
             for j in range(iterations):
 
                 if self.rectangles.array_of_numbers[j] > self.rectangles.array_of_numbers[j+1]:
+                    time.sleep(self.delay)
                     self.swap(j)
                     draw_rectangles()
 

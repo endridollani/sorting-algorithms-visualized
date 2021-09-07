@@ -16,7 +16,7 @@ class Draw():
         self.win = window
         self.rectangles = rects.Rectangles(self.number_of_rectangles)
         self.array_of_numbers = self.rectangles.get_array_of_numbers()
-        self.delay_in_millisecondes = delay_in_millisecondes
+        self.delay_in_millisecondes = delay_in_millisecondes / 1000
         self.sort_state  = False
         self.sort_index = -1
         self.shuffled = False
