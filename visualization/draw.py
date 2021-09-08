@@ -5,6 +5,7 @@ from algorithms import bubble_sort
 from algorithms import quick_sort
 from algorithms import heap_sort
 from algorithms import merge_sort
+from algorithms import selection_sort
 
 class Draw(rectangles.Rectangles):
     def __init__(self,window,number_of_rectangles,delay_in_millisecondes):
@@ -18,6 +19,7 @@ class Draw(rectangles.Rectangles):
         self.qs = quick_sort.QuickSort(self.window,self.number_of_rectangles,self.delay_in_millisecondes)
         self.hs = heap_sort.HeapSort(self.window,self.number_of_rectangles,self.delay_in_millisecondes)
         self.ms = merge_sort.MergeSort(self.window,self.number_of_rectangles,self.delay_in_millisecondes)
+        self.ss = selection_sort.SelectionSort(self.window,self.number_of_rectangles,self.delay_in_millisecondes)
 
         self.is_required_for_sorting  = False
         self.sort_index = -1
@@ -40,11 +42,15 @@ class Draw(rectangles.Rectangles):
         self.qs.set_defaults()
         self.hs.set_defaults()
         self.ms.set_defaults()
+        self.ss.set_defaults()
         
     def sort_visualization(self):
         if self.sort_index == 0 and not self.array_sorted:
             self.bs.sort()
             super().set_array_of_numbers(self.bs.get_array_of_numbers())
+        elif self.sort_index == 1 and not self.array_sorted:
+            self.ss.sort()
+            super().set_array_of_numbers(self.ss.get_array_of_numbers())
         elif self.sort_index == 3 and not self.array_sorted:
             self.ms.sort()
             super().set_array_of_numbers(self.ms.get_array_of_numbers())
@@ -63,6 +69,8 @@ class Draw(rectangles.Rectangles):
     def rectangle_bar_chart(self):
         if self.sort_index == 0:
             self.bs.information()
+        elif self.sort_index == 1:
+            self.ss.information()
         elif self.sort_index == 3:
             self.ms.information()
         elif self.sort_index == 4:
