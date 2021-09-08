@@ -8,7 +8,7 @@ the array and delay time in milliseconds, then select one of the sorting algorit
 ## Sorting algorithms implemented
 
 - [x] Bubble Sort
-- [ ] Selection Sort
+- [x] Selection Sort
 - [ ] Insertion Sort
 - [x] Merge Sort
 - [x] Quick Sort
