@@ -36,21 +36,7 @@ class Rectangles:
             time.sleep(self.delay)
             pygame.draw.rect(self.window.get_display(),(0, 255, 0), rectangle)
             pygame.display.flip()
-        
-    # def draw_merge_sort(self,window,l,r,m,li,ri):
-    #     for i in self.array_of_numbers:
-    #         val = i
-    #         pos = self.array_of_numbers.index(val)
-    #         rectangle = self.get_rectangle_at(pos,val)
-    #         if pos == l or pos == r:
-    #             pygame.draw.rect(window.get_display(),(0, 255, 0), rectangle)
-    #         elif pos == m:
-    #             pygame.draw.rect(window.get_display(),(0, 150, 255), rectangle)
-    #         elif pos == li or pos == ri:
-    #             pygame.draw.rect(window.get_display(),(255, 0, 0), rectangle)
-    #         else:
-    #             pygame.draw.rect(window.get_display(),(255, 255, 255), rectangle)
-    
+  
     def initialize_new_array_of_numbers(self):
         array_of_numbers = [n for n in range(self.number_of_rectangles)]
         random.shuffle(array_of_numbers)

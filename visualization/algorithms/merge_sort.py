@@ -1,60 +1,25 @@
+from algorithms.rectangles import Rectangles
 import pygame
 from pygame import font
 import time
 
 font.init()
-
 font = pygame.font.SysFont('arial', 15)
 
-
-def display_sort_algorithm_information(window, algorithm, comparisons, array_accesses, number_of_rectangles, delay_in_millisecondes):
-    algorithm_selected = font.render(
-        f'{algorithm}', True, (255, 255, 255), (0, 0, 0))
-    algorithm_rect_number = font.render(
-        f'Rectangles: {number_of_rectangles}', True, (255, 255, 255), (0, 0, 0))
-    algorithm_comparisons = font.render(
-        f'Comparisons: {comparisons}', True, (255, 255, 255), (0, 0, 0))
-    algorithm_accesses = font.render(
-        f'Array accesses: {array_accesses}', True, (255, 255, 255), (0, 0, 0))
-    delays = font.render(
-        f'Delay {delay_in_millisecondes * 1000} ms', True, (255, 255, 255), (0, 0, 0))
-
-    window.blit(algorithm_selected, (10, 10))
-    window.blit(algorithm_rect_number, (10, 30))
-    window.blit(algorithm_comparisons, (10, 50))
-    window.blit(algorithm_accesses, (10, 70))
-    window.blit(delays, (10, 90))
-
-
-class MergeSort:
-    def __init__(self, rectangles,delay_in_millisecondes,window):
-        self.rectangles = rectangles
-        # self.swaped = False
-        # self.number_of_swaps = 0
-        self.array_of_numbers = self.rectangles.get_array_of_numbers()
+class MergeSort(Rectangles):
+    def __init__(self, window, number_of_rectangles, delay):
+        super().__init__(window, number_of_rectangles, delay)
         self.window = window
-        self.delay = delay_in_millisecondes / 1000
+        self.delay = delay
+        self.number_of_rectangles = number_of_rectangles
         self.comparisons = 0
         self.array_accesses = 0
 
-    def set_window_and_delay(self,window,delay): 
-        self.window = window
-        self.delay = delay 
-    
-    def display_information(self):
-        display_sort_algorithm_information(self.window.get_window(),"Merge Sort",self.comparisons,self.array_accesses,self.rectangles.number_of_rectangles,self.delay)
-
-    def draw_rectangles(self,l,r,m,li,ri):
-        self.window.set_bg()
-        self.rectangles.draw_merge_sort(self.window,l,r,m,li,ri)
-        display_sort_algorithm_information(self.window.get_window(),"Merge Sort",self.comparisons,self.array_accesses,self.rectangles.number_of_rectangles,self.delay)
-        pygame.display.flip()
-
-    def display(self):
-        self.merge_sort(self.array_of_numbers, 0,
-                        len(self.array_of_numbers) - 1)
-        self.rectangles.draw_rectangles(self.window.get_window())
-        self.rectangles.sort_finished(self.window.get_window(), 0.01)
+    def sort(self):
+        self.merge_sort(super().get_array_of_numbers(), 0, self.number_of_rectangles - 1)
+            
+        super().draw() 
+        super().draw_finishline()
 
     def merge(self,arr, l, m, r):
         n1 = m - l + 1
@@ -82,7 +47,7 @@ class MergeSort:
             if L[i] <= R[j]:
                 arr[k] = L[i]
                 time.sleep(self.delay)
-                self.draw_rectangles(l,r,m,self.array_of_numbers.index(L[i]),self.array_of_numbers.index(R[j]))
+                self.draw(l,r,m,super().get_array_of_numbers().index(L[i]),super().get_array_of_numbers().index(R[j]))
                 i += 1
                 self.comparisons += 1
                 self.array_accesses +=1
@@ -90,7 +55,7 @@ class MergeSort:
             else:
                 arr[k] = R[j]
                 time.sleep(self.delay)
-                self.draw_rectangles(l,r,m,self.array_of_numbers.index(arr[k]),self.array_of_numbers.index(R[j]))
+                self.draw(l,r,m,super().get_array_of_numbers().index(arr[k]),super().get_array_of_numbers().index(R[j]))
                 j += 1
                 self.array_accesses += 2
             k += 1
@@ -100,7 +65,7 @@ class MergeSort:
         while i < n1:
             arr[k] = L[i]
             time.sleep(self.delay)
-            self.draw_rectangles(l,r,m,self.array_of_numbers.index(arr[k]),self.array_of_numbers.index(L[i]))
+            self.draw(l,r,m,super().get_array_of_numbers().index(arr[k]),super().get_array_of_numbers().index(L[i]))
             i += 1
             k += 1
             self.comparisons +=1
@@ -112,7 +77,7 @@ class MergeSort:
         while j < n2:
             arr[k] = R[j]
             time.sleep(self.delay)
-            self.draw_rectangles(l,r,m,self.array_of_numbers.index(arr[k]),self.array_of_numbers.index(R[j]))
+            self.draw(l,r,m,super().get_array_of_numbers().index(arr[k]),super().get_array_of_numbers().index(R[j]))
             j += 1
             k += 1
             self.comparisons += 1
@@ -133,3 +98,49 @@ class MergeSort:
             self.merge_sort(arr, l, m)
             self.merge_sort(arr, m+1, r)
             self.merge(arr, l, m, r)
+
+
+    def set_defaults(self):
+        self.comparisons = 0
+        self.array_accesses = 0
+   
+    def get_array_of_numbers(self):
+        return super().get_array_of_numbers()
+    
+    def draw(self,l,r,m,li,ri):
+        self.window.set_background()
+        
+        self.information()
+        
+        for i in super().get_array_of_numbers():
+            val = i
+            pos = super().get_array_of_numbers().index(val)
+            rectangle = super().get_rectangle_at(pos,val)
+            if pos == l or pos == r:
+                pygame.draw.rect(self.window.get_display(),(0, 255, 0), rectangle)
+            elif pos == m:
+                pygame.draw.rect(self.window.get_display(),(0, 150, 255), rectangle)
+            elif pos == li or pos == ri:
+                pygame.draw.rect(self.window.get_display(),(255, 0, 0), rectangle)
+            else:
+                pygame.draw.rect(self.window.get_display(),(255, 255, 255), rectangle)
+
+        pygame.display.flip()
+    
+    def information(self):
+        algorithm = font.render(
+            "Merge Sort", True, (255, 255, 255), (0, 0, 0))
+        rectangles_drawn = font.render(
+            f'Rectangles: {len(super().get_array_of_numbers())}', True, (255, 255, 255), (0, 0, 0))
+        swaps = font.render(
+            f'Comparisons: {self.comparisons}', True, (255, 255, 255), (0, 0, 0))
+        array_accesses = font.render(
+            f'Array Accesses: {self.array_accesses}', True, (255, 255, 255), (0, 0, 0))
+        delays = font.render(
+            f'Delay {self.delay * 1000} ms', True, (255, 255, 255), (0, 0, 0))
+
+        self.window.get_display().blit(algorithm, (10, 10))
+        self.window.get_display().blit(rectangles_drawn, (10, 30))
+        self.window.get_display().blit(swaps, (10, 50))
+        self.window.get_display().blit(array_accesses, (10, 70))
+        self.window.get_display().blit(delays, (10, 90))
