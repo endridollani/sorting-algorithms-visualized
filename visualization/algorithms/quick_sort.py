@@ -1,60 +1,24 @@
+from algorithms.rectangles import Rectangles
 import pygame
 from pygame import font
 import time
 
 font.init()
-
 font = pygame.font.SysFont('arial', 15)
 
-
-def display_sort_algorithm_information(window, algorithm, comparisons, array_accesses, number_of_rectangles, delay_in_millisecondes):
-    algorithm_selected = font.render(
-        f'{algorithm}', True, (255, 255, 255), (0, 0, 0))
-    algorithm_rect_number = font.render(
-        f'Rectangles: {number_of_rectangles}', True, (255, 255, 255), (0, 0, 0))
-    algorithm_comparisons = font.render(
-        f'Comparisons: {comparisons}', True, (255, 255, 255), (0, 0, 0))
-    algorithm_accesses = font.render(
-        f'Array accesses: {array_accesses}', True, (255, 255, 255), (0, 0, 0))
-    delays = font.render(
-        f'Delay {delay_in_millisecondes * 1000} ms', True, (255, 255, 255), (0, 0, 0))
-
-    window.blit(algorithm_selected, (10, 10))
-    window.blit(algorithm_rect_number, (10, 30))
-    window.blit(algorithm_comparisons, (10, 50))
-    window.blit(algorithm_accesses, (10, 70))
-    window.blit(delays, (10, 90))
-
-
-class QuickSort:
-    def __init__(self, rectangles, delay_in_millisecondes,window):
-        self.rectangles = rectangles
-        self.array_of_numbers = self.rectangles.get_array_of_numbers()
-        self.window = window
-        self.delay = delay_in_millisecondes / 1000
-        self.comparisons = 0
-        self.array_accesses = 0
-
-    def set_window_and_delay(self, window, delay):
+class QuickSort(Rectangles):
+    def __init__(self, window, number_of_rectangles, delay):
+        super().__init__(window, number_of_rectangles, delay)
         self.window = window
         self.delay = delay
-
-    def display_information(self):
-        display_sort_algorithm_information(self.window.get_window(
-        ), "Quick Sort", self.comparisons, self.array_accesses, self.rectangles.number_of_rectangles, self.delay)
-
-    def draw_rectangles(self, start, end, pivot):
-        self.window.set_bg()
-        self.rectangles.draw_quick_sort(
-            self.window.get_window(), start, end, pivot)
-        display_sort_algorithm_information(self.window.get_window(
-        ), "Quick Sort", self.comparisons, self.array_accesses, self.rectangles.number_of_rectangles, self.delay)
-        pygame.display.flip()
-
-    def display(self):
-        self.quick_sort(0, len(self.array_of_numbers) - 1, self.array_of_numbers)
-        self.rectangles.draw_rectangles(self.window.get_window())
-        self.rectangles.sort_finished(self.window.get_window(), 0.01)
+        self.number_of_rectangles = number_of_rectangles
+        self.comparisons = 0
+        self.array_accesses = 0
+   
+    def sort(self):
+        self.quick_sort(0, self.number_of_rectangles - 1, super().get_array_of_numbers())
+        super().draw() 
+        super().draw_finishline()
 
     # The main function that implements QuickSort
     def quick_sort(self, start, end, array):
@@ -68,8 +32,8 @@ class QuickSort:
             # and after partition
             self.quick_sort(start, p - 1, array)
             self.quick_sort(p + 1, end, array)
-
-    # This Function handles sorting part of quick sort
+    
+    #This Function handles sorting part of quick sort
     # start and end points to first and last element of
     # an array respectively
 
@@ -91,7 +55,7 @@ class QuickSort:
                 self.array_accesses += 1
                 start += 1
                 time.sleep(self.delay)
-                self.draw_rectangles(start, end, pivot)
+                self.draw(start, end, pivot)
 
             # Decrement the end pointer till it finds an
             # element less than pivot
@@ -100,7 +64,7 @@ class QuickSort:
                 self.array_accesses += 1
                 end -= 1
                 time.sleep(self.delay)
-                self.draw_rectangles(start, end, pivot)
+                self.draw(start, end, pivot)
 
             # If start and end have not crossed each other,
             # swap the numbers on start and end
@@ -108,14 +72,58 @@ class QuickSort:
                 self.comparisons += 1
                 array[start], array[end] = array[end], array[start]
                 time.sleep(self.delay)
-                self.draw_rectangles(start, end, pivot)
+                self.draw(start, end, pivot)
 
         # Swap pivot element with element on end pointer.
         # This puts pivot on its correct sorted place.
         array[end], array[pivot_index] = array[pivot_index], array[end]
         self.array_accesses += 2
         time.sleep(self.delay)
-        self.draw_rectangles(start, end, pivot_index)
+        self.draw(start, end, pivot_index)
 
         # Returning end pointer to divide the array into 2
         return end
+    
+    def set_defaults(self):
+        self.comparisons = 0
+        self.array_accesses = 0
+   
+    def get_array_of_numbers(self):
+        return super().get_array_of_numbers()
+    
+    def draw(self,start,end,pivot_index):
+        self.window.set_background()
+        
+        self.information()
+        
+        for i in self.array_of_numbers:
+            val = i
+            pos = super().get_array_of_numbers().index(val)
+            rectangle = super().get_rectangle_at(pos,val)
+            
+            if pos == start or pos == end:
+                pygame.draw.rect(self.window.get_display(),(255, 0, 0), rectangle)
+            elif pos == pivot_index:
+                pygame.draw.rect(self.window.get_display(),(0,255,255), rectangle)
+            else:
+                pygame.draw.rect(self.window.get_display(),(255,255,255), rectangle)
+
+        pygame.display.flip()
+    
+    def information(self):
+        algorithm = font.render(
+            "Quick Sort", True, (255, 255, 255), (0, 0, 0))
+        rectangles_drawn = font.render(
+            f'Rectangles: {len(super().get_array_of_numbers())}', True, (255, 255, 255), (0, 0, 0))
+        swaps = font.render(
+            f'Comparisons: {self.comparisons}', True, (255, 255, 255), (0, 0, 0))
+        array_accesses = font.render(
+            f'Array Accesses: {self.array_accesses}', True, (255, 255, 255), (0, 0, 0))
+        delays = font.render(
+            f'Delay {self.delay * 1000} ms', True, (255, 255, 255), (0, 0, 0))
+
+        self.window.get_display().blit(algorithm, (10, 10))
+        self.window.get_display().blit(rectangles_drawn, (10, 30))
+        self.window.get_display().blit(swaps, (10, 50))
+        self.window.get_display().blit(array_accesses, (10, 70))
+        self.window.get_display().blit(delays, (10, 90))

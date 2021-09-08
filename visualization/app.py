@@ -33,4 +33,3 @@ if __name__ ==  "__main__":
             draw_to_window.rectangle_bar_chart()
 
         pygame.display.flip()
-

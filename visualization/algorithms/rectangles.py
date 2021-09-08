@@ -1,12 +1,12 @@
 import pygame
 import time
 import random
-from pygame import font
+# from pygame import font
 
-font.init()
+# font.init()
 pygame.init()
 
-font = pygame.font.SysFont('arial', 15)
+# font = pygame.font.SysFont('arial', 15)
 
 class Rectangles:
     def __init__(self,window,number_of_rectangles,delay):
@@ -16,13 +16,13 @@ class Rectangles:
         self.array_of_numbers = self.initialize_new_array_of_numbers()
 
     def get_array_of_numbers(self): return self.array_of_numbers
-   
+    def set_array_of_numbers(self,array): self.array_of_numbers = array
     def get_rectangle_at(self,pos,val):
         left_p = (1300 / self.number_of_rectangles) * pos
         return pygame.Rect(left_p,700 - (650 * (val + 1) / (self.number_of_rectangles + 5)), (1300 / self.number_of_rectangles),(650 * (val + 1) / self.number_of_rectangles))
 
     def draw(self):
-        self.information()
+        # self.information()
         
         for i in self.array_of_numbers:
             val = i
@@ -31,10 +31,8 @@ class Rectangles:
             
             pygame.draw.rect(self.window.get_display(),(255,255,255), rectangle)
         
-        
-    
     def draw_finishline(self):
-         for i in self.array_of_numbers:
+        for i in self.array_of_numbers:
             val = i
             pos = self.array_of_numbers.index(val)
             rectangle = self.get_rectangle_at(pos,val)
@@ -42,15 +40,16 @@ class Rectangles:
             time.sleep(self.delay)
             pygame.draw.rect(self.window.get_display(),(0, 255, 0), rectangle)
             pygame.display.flip()
+        
     
-    def information(self):
-        rectangle_number = font.render(
-            f'Rectangles: {self.number_of_rectangles}', True, (255, 255, 255), (0, 0, 0))
-        delays = font.render(
-            f'Delay {self.delay * 1000} ms', True, (255, 255, 255), (0, 0, 0))
+    # def information(self):
+    #     rectangle_number = font.render(
+    #         f'Rectangles: {self.number_of_rectangles}', True, (255, 255, 255), (0, 0, 0))
+    #     delays = font.render(
+    #         f'Delay {self.delay * 1000} ms', True, (255, 255, 255), (0, 0, 0))
 
-        self.window.get_display().blit(rectangle_number, (10, 10))
-        self.window.get_display().blit(delays, (10, 30))
+    #     self.window.get_display().blit(rectangle_number, (10, 10))
+    #     self.window.get_display().blit(delays, (10, 30))
        
     # def draw_quick_sort(self,window,start,end,pivot):
     #     for i in self.array_of_numbers:

@@ -35,9 +35,19 @@ class BubbleSort(Rectangles):
             iterations -= 1
         
         self.swap_index = -1
-        super().draw()
+            
+        super().draw() 
         super().draw_finishline()
-        
+            
+
+    def set_defaults(self):
+        self.swap_index = -1
+        self.swaps = 0
+        self.array_accesses = 0
+   
+    def get_array_of_numbers(self):
+        return super().get_array_of_numbers()
+    
     def draw(self):
         self.window.set_background()
         
@@ -56,6 +66,7 @@ class BubbleSort(Rectangles):
                 pygame.draw.rect(self.window.get_display(),(255,255,255), rectangle)
 
         pygame.display.flip()
+    
     def information(self):
         algorithm = font.render(
             "Bubble Sort", True, (255, 255, 255), (0, 0, 0))
@@ -64,7 +75,7 @@ class BubbleSort(Rectangles):
         swaps = font.render(
             f'Swaps: {self.swaps}', True, (255, 255, 255), (0, 0, 0))
         array_accesses = font.render(
-            f'Array Writes: {self.swaps * 2}', True, (255, 255, 255), (0, 0, 0))
+            f'Array Accesses: {self.swaps * 2}', True, (255, 255, 255), (0, 0, 0))
         delays = font.render(
             f'Delay {self.delay * 1000} ms', True, (255, 255, 255), (0, 0, 0))
 
