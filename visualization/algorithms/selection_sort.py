@@ -1,3 +1,4 @@
+from pygame import draw
 from algorithms.rectangles import Rectangles
 import pygame
 from pygame import font
@@ -28,11 +29,13 @@ class SelectionSort(Rectangles):
                     min_idx = j
                     self.array_accesses += 1
                     
+                self.draw(i,j,min_idx)
+                    
             # Swap the found minimum element with 
             # the first element
             time.sleep(self.delay)
             self.swap(i,min_idx)
-            self.draw()
+
             self.array_accesses += 1
         
             
@@ -49,7 +52,7 @@ class SelectionSort(Rectangles):
     def get_array_of_numbers(self):
         return super().get_array_of_numbers()
     
-    def draw(self):
+    def draw(self,index_i,index_j,min_index):
         self.window.set_background()
         
         self.information()
@@ -60,9 +63,11 @@ class SelectionSort(Rectangles):
             rectangle = super().get_rectangle_at(pos,val)
             
 
-            if pos == self.swap_index:
+            if pos == index_i:
+                pygame.draw.rect(self.window.get_display(),(0,255,0), rectangle)
+            elif pos == index_j:
                 pygame.draw.rect(self.window.get_display(),(255,0,0), rectangle)
-            elif pos == self.swap_min_index:
+            elif pos == min_index:
                 pygame.draw.rect(self.window.get_display(),(0,0,255), rectangle)
             else:
                 pygame.draw.rect(self.window.get_display(),(255,255,255), rectangle)
