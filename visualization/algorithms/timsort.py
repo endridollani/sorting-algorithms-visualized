@@ -7,7 +7,7 @@ import time
 font.init()
 font = pygame.font.SysFont('arial', 15)
 
-class InsertionSort(Rectangles):
+class TimSort(Rectangles):
     def __init__(self, window, number_of_rectangles, delay):
         super().__init__(window, number_of_rectangles, delay)
         self.window = window
@@ -19,31 +19,26 @@ class InsertionSort(Rectangles):
         self.array_accesses = 0
 
     def sort(self):
+        # Traverse through all array elements
+        for i in range(self.number_of_rectangles):
+            # Find the minimum element in remaining 
+            # unsorted array
+            min_idx = i
+            for j in range(i+1, self.number_of_rectangles):
+                if super().get_array_of_numbers()[min_idx] > super().get_array_of_numbers()[j]:
+                    min_idx = j
+                    self.array_accesses += 1
+                    
+                self.draw(i,j,min_idx)
+                    
+            # Swap the found minimum element with 
+            # the first element
+            time.sleep(self.delay)
+            self.swap(i,min_idx)
 
-        # Traverse through 1 to len(arr)
-        for i in range(1, self.number_of_rectangles):
-        
-            key = super().get_array_of_numbers()[i]
-
-            # Move elements of arr[0..i-1], that are
-            # greater than key, to one position ahead
-            # of their current position
-            j = i-1
-            while j >=0 and key < super().get_array_of_numbers()[j] :
-                super().get_array_of_numbers()[j+1] = super().get_array_of_numbers()[j]
-                self.swaps += 1
-                self.array_accesses +=1
-                j -= 1
-                time.sleep(self.delay)
-                self.draw(i,j) 
-
-        
-            super().get_array_of_numbers()[j+1] = key
             self.array_accesses += 1
         
-            # time.sleep(self.delay)
-            # self.draw(i,j)
-
+            
         super().draw() 
         super().draw_finishline()
             
@@ -57,7 +52,7 @@ class InsertionSort(Rectangles):
     def get_array_of_numbers(self):
         return super().get_array_of_numbers()
     
-    def draw(self,index_i,index_j):
+    def draw(self,index_i,index_j,min_index):
         self.window.set_background()
         
         self.information()
@@ -67,21 +62,21 @@ class InsertionSort(Rectangles):
             pos = super().get_array_of_numbers().index(val)
             rectangle = super().get_rectangle_at(pos,val)
             
-            
 
             if pos == index_i:
                 pygame.draw.rect(self.window.get_display(),(0,255,0), rectangle)
-            elif pos == index_j or pos == index_j+1:
+            elif pos == index_j:
                 pygame.draw.rect(self.window.get_display(),(255,0,0), rectangle)
+            elif pos == min_index:
+                pygame.draw.rect(self.window.get_display(),(0,0,255), rectangle)
             else:
                 pygame.draw.rect(self.window.get_display(),(255,255,255), rectangle)
 
-    
         pygame.display.flip()
     
     def information(self):
         algorithm = font.render(
-            "Insertion Sort", True, (255, 255, 255), (0, 0, 0))
+            "Selection Sort", True, (255, 255, 255), (0, 0, 0))
         rectangles_drawn = font.render(
             f'Rectangles: {len(super().get_array_of_numbers())}', True, (255, 255, 255), (0, 0, 0))
         swaps = font.render(
@@ -96,3 +91,9 @@ class InsertionSort(Rectangles):
         self.window.get_display().blit(swaps, (10, 50))
         self.window.get_display().blit(array_accesses, (10, 70))
         self.window.get_display().blit(delays, (10, 90))
+
+    def swap(self,index,min_index):
+        self.swaps += 1
+        self.swap_index = index
+        self.swap_min_index = min_index
+        super().get_array_of_numbers()[index], super().get_array_of_numbers()[min_index] = super().get_array_of_numbers()[min_index], super().get_array_of_numbers()[index]
