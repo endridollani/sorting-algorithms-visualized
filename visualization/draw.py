@@ -7,6 +7,7 @@ from algorithms import heap_sort
 from algorithms import merge_sort
 from algorithms import selection_sort
 from algorithms import insertion_sort
+from algorithms import timsort
 
 class Draw(rectangles.Rectangles):
     def __init__(self,window,number_of_rectangles,delay_in_millisecondes):
@@ -22,6 +23,7 @@ class Draw(rectangles.Rectangles):
         self.ms = merge_sort.MergeSort(self.window,self.number_of_rectangles,self.delay_in_millisecondes)
         self.ss = selection_sort.SelectionSort(self.window,self.number_of_rectangles,self.delay_in_millisecondes)
         self.ins = insertion_sort.InsertionSort(self.window,self.number_of_rectangles,self.delay_in_millisecondes)
+        self.tim = timsort.TimSort(self.window,self.number_of_rectangles,self.delay_in_millisecondes)
 
         self.is_required_for_sorting  = False
         self.sort_index = -1
@@ -46,6 +48,7 @@ class Draw(rectangles.Rectangles):
         self.ms.set_defaults()
         self.ss.set_defaults()
         self.ins.set_defaults()
+        self.tim.set_defaults()
         
     def sort_visualization(self):
         if self.sort_index == 0 and not self.array_sorted:
@@ -66,6 +69,9 @@ class Draw(rectangles.Rectangles):
         elif self.sort_index == 5 and not self.array_sorted:
             self.hs.sort()
             super().set_array_of_numbers(self.hs.get_array_of_numbers())
+        elif self.sort_index == 6 and not self.array_sorted:
+            self.tim.sort()
+            super().set_array_of_numbers(self.tim.get_array_of_numbers())
 
         super().draw()
         self.is_required_for_sorting = False
@@ -85,4 +91,6 @@ class Draw(rectangles.Rectangles):
             self.qs.information()
         elif self.sort_index == 5:
             self.hs.information()
+        elif self.sort_index == 6:
+            self.tim.information()
         super().draw()

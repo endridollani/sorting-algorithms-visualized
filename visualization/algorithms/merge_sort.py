@@ -132,7 +132,7 @@ class MergeSort(Rectangles):
             "Merge Sort", True, (255, 255, 255), (0, 0, 0))
         rectangles_drawn = font.render(
             f'Rectangles: {len(super().get_array_of_numbers())}', True, (255, 255, 255), (0, 0, 0))
-        swaps = font.render(
+        comparisons = font.render(
             f'Comparisons: {self.comparisons}', True, (255, 255, 255), (0, 0, 0))
         array_accesses = font.render(
             f'Array Accesses: {self.array_accesses}', True, (255, 255, 255), (0, 0, 0))
@@ -141,6 +141,6 @@ class MergeSort(Rectangles):
 
         self.window.get_display().blit(algorithm, (10, 10))
         self.window.get_display().blit(rectangles_drawn, (10, 30))
-        self.window.get_display().blit(swaps, (10, 50))
+        self.window.get_display().blit(comparisons, (10, 50))
         self.window.get_display().blit(array_accesses, (10, 70))
         self.window.get_display().blit(delays, (10, 90))

@@ -40,9 +40,6 @@ class InsertionSort(Rectangles):
         
             super().get_array_of_numbers()[j+1] = key
             self.array_accesses += 1
-        
-            # time.sleep(self.delay)
-            # self.draw(i,j)
 
         super().draw() 
         super().draw_finishline()
