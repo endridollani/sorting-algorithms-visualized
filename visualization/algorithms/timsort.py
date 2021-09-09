@@ -188,7 +188,7 @@ class TimSort(Rectangles):
         array_accesses = font.render(
             f'Array Accesses: {self.array_accesses}', True, (255, 255, 255), (0, 0, 0))
         comparisons = font.render(
-            f'Array Accesses: {self.comparisons}', True, (255, 255, 255), (0, 0, 0))
+            f'Comparisons: {self.comparisons}', True, (255, 255, 255), (0, 0, 0))
         delays = font.render(
             f'Delay {self.delay * 1000} ms', True, (255, 255, 255), (0, 0, 0))
 
