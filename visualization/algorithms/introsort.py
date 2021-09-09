@@ -95,24 +95,24 @@ class IntroSort(Rectangles):
             largest = l
             self.array_accesses += 1
             time.sleep(self.delay)
-            self.draw(-1,-1,-1,-1,-1,index,largest)
+            self.draw(-1,-1,-1,index,largest)
         else:
             largest = index
             time.sleep(self.delay)
-            self.draw(-1,-1,-1,-1,-1,index,largest)
+            self.draw(-1,-1,-1,index,largest)
 
         if (r < size and alist[start + r] > alist[start + largest]):
             largest = r
             self.array_accesses += 1
             time.sleep(self.delay)
-            self.draw(-1,-1,-1,-1,-1,index,largest)
+            self.draw(-1,-1,-1,index,largest)
 
         if largest != index:
             self.swap(alist, start + largest, start + index)
             self.max_heapify(alist, largest, start, end)
             self.array_accesses += 1
             time.sleep(self.delay)
-            self.draw(-1,-1,-1,-1,-1,index,largest)
+            self.draw(-1,-1,-1,index,largest)
 
 
     def set_defaults(self):
