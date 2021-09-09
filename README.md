@@ -13,7 +13,7 @@ the array and delay time in milliseconds, then select one of the sorting algorit
 - [x] Merge Sort
 - [x] Quick Sort
 - [x] Heap Sort
-- [ ] TimSort (Hybrid of Merge and Insertion Sort)
+- [x] TimSort (Hybrid of Merge and Insertion Sort)
 - [ ] IntroSort (Hybrid of Quick Sort,Heap Sort and Insertion Sort)
 
 ---
