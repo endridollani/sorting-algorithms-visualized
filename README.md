@@ -46,6 +46,18 @@ All it takes from the user is the array size and delay in milliseconds to start 
      width="200" /><img src="screenshots/merge-sort.png"
      alt="Merge Sort"
      style="float: left; margin-right: 10px"
+     width="200" /><img src="screenshots/quick-sort.png"
+     alt="Quick Sort"
+     style="float: left; margin-right: 10px"
+     width="200" /><img src="screenshots/heap-sort.png"
+     alt="Heap Sort"
+     style="float: left; margin-right: 10px"
+     width="200" /><img src="screenshots/tim-sort.png"
+     alt="Tim Sort"
+     style="float: left; margin-right: 10px"
+     width="200" /><img src="screenshots/intro-sort.png"
+     alt="Intro Sort"
+     style="float: left; margin-right: 10px"
      width="200" />
 
 ## Setup
