@@ -45,7 +45,7 @@ All it takes from the user is the array size and delay in milliseconds to start 
      width="200" /><img src="screenshots/quick-sort.png"
      alt="Quick Sort"
      width="200" /><img src="screenshots/heap-sort.png"
-     alt="Heap Sort"ght: 10px"
+     alt="Heap Sort"
      width="200" /><img src="screenshots/tim-sort.png"
      alt="Tim Sort"
      width="200" /><img src="screenshots/intro-sort.png"
