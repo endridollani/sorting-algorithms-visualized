@@ -74,10 +74,10 @@ That's it !
 
 > NOTE: When sorting starts, you can't close the window until it's finished. This happens because the event handler loop stops until the sort is finished for performance reasons.
 
-> NOTE: You can terminate the program anytime by presing `ctrl c` in the terminal.
+> NOTE: You can terminate the program anytime by presing `ctrl+c` in the terminal.
 
 > NOTE: Dont put a big value as the delay time when the number or rectangles is big and this will not be a problem at all 😉.
  
 ## License
- 
+
 ![APM](https://img.shields.io/apm/l/vim-mode?style=plastic)
