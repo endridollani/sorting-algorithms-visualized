@@ -12,7 +12,6 @@ All it takes from the user is the array size and delay in milliseconds to start 
   - [Screenshots](#screenshots)
   - [Setup](#setup)
   - [Usage](#usage)
-  - [Contributing](#contributing)
   - [License](#license)
 
 ## Algorithms implemented so far:
@@ -39,11 +38,5 @@ All it takes from the user is the array size and delay in milliseconds to start 
 
 ## Usage
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
 ## License 
-
 ![APM](https://img.shields.io/apm/l/vim-mode?style=plastic)
