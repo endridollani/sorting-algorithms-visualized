@@ -36,6 +36,7 @@ All it takes from the user is the array size and delay in milliseconds to start 
 
 <img src="screenshots/bubble-sort.png"
      alt="Bubble Sort"
+     style="margin-right: 10px;"
      width="200" /><img src="screenshots/selection-sort.png"
      alt="Selection Sort"
      width="200" /><img src="screenshots/insertion-sort.png"
