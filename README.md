@@ -54,6 +54,16 @@ All it takes from the user is the array size and delay in milliseconds to start 
 
 ## Setup
 
+Install [Python3](https://www.python.org/downloads/) and [pip3](https://www.activestate.com/resources/quick-reads/how-to-install-and-use-pip3/) on your system.
+
+After you have those two on your system, go inside **/visualization** directory and open the terminal. 
+
+Run the lines below:
+
+`pip3 install pygame pygame_gui`
+
+`python3 app.py`
+
 ## Usage
 
 ## License 
