@@ -6,8 +6,6 @@ All it takes from the user is the array size and delay in milliseconds to start 
 
 ## Table of Content
 
----
-
   - [Algorithms implemented so far:](#algorithms-implemented-so-far)
   - [Screenshots](#screenshots)
   - [Setup](#setup)
