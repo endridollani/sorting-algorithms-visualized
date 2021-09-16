@@ -1,34 +1,49 @@
-# Sorting Visualized
+# Sort Visualizer
 
----
-Here you can see visually some famous sorting algorithms.
-The only thing you need to do after executing the program is to enter the size of
-the array and delay time in milliseconds, then select one of the sorting algorithms implemented and see the magic happen.
+This program visualizes different sorting algorithms by displaying the process step by step using a bar chart.
 
-## Sorting algorithms implemented
+All it takes from the user is the array size and delay in milliseconds to start the visualization.  
 
-- [x] Bubble Sort
-- [x] Selection Sort
-- [x] Insertion Sort
-- [x] Merge Sort
-- [x] Quick Sort
-- [x] Heap Sort
-- [x] TimSort (Hybrid of Merge and Insertion Sort)
-- [x] IntroSort (Hybrid of Quick Sort,Heap Sort and Insertion Sort)
+## Table of Content
 
 ---
 
-## Set up
+  - [Algorithms implemented so far:](#algorithms-implemented-so-far)
+  - [Screenshots](#screenshots)
+  - [Setup](#setup)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [License](#license)
 
-Clon the repo
+## Algorithms implemented so far:
 
-`git clone https://github.com/endridollani/sorting-algorithms-visualized.git/sorting_visualized`
+✅ **Bubble Sort**
 
-Check if you have Python 3 and pip3 installed on your system.
-If they are installed you can execute the line below inside the project directory: 
+✅ **Selection Sort**
 
-`pip3 install pygame`
+✅ **Insertion Sort**
 
-`pip3 install pygame_gui`
+✅ **Merge Sort**
 
-`python3 app.py`
+✅ **Quick Sort**
+
+✅ **Heap Sort**
+
+✅ **TimSort** _(Hybrid of Merge and       Insertion Sort)_
+
+✅ **IntroSort** _(Hybrid of Quick Sort,Heap Sort and Insertion Sort)_
+
+## Screenshots
+
+## Setup
+
+## Usage
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License 
+
+![APM](https://img.shields.io/apm/l/vim-mode?style=plastic)
