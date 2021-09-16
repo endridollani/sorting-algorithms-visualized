@@ -34,6 +34,20 @@ All it takes from the user is the array size and delay in milliseconds to start 
 
 ## Screenshots
 
+<img src="screenshots/bubble-sort.png"
+     alt="Bubble Sort"
+     style="float: left; margin-right: 10px"
+     width="200" /><img src="screenshots/selection-sort.png"
+     alt="Selection Sort"
+     style="float: left; margin-right: 10px"
+     width="200" /><img src="screenshots/insertion-sort.png"
+     alt="Insertion Sort"
+     style="float: left; margin-right: 10px"
+     width="200" /><img src="screenshots/merge-sort.png"
+     alt="Merge Sort"
+     style="float: left; margin-right: 10px"
+     width="200" />
+
 ## Setup
 
 ## Usage
