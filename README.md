@@ -66,5 +66,15 @@ Run the lines below:
 
 ## Usage
 
+After the program is executed, in the terminal window enter a number > 2 or <= 1000 and a time delay >= 0. 
+
+A window will open and you can play with the options given.
+
+That's it !  
+
+> NOTE: When sorting starts, you can't close the window until it's finished.
+> NOTE: This happens because the event handler loop stops until the sort is finished for performance reasons.
+> NOTE: You can terminate the program anytime by presing `ctrl c` in the terminal.
+> NOTE: Dont put a big value as the delay time and this will not be a problem at all 😉. 
 ## License 
 ![APM](https://img.shields.io/apm/l/vim-mode?style=plastic)
